@@ -1,5 +1,12 @@
 {
   "asOf": "2026-11-21",
-  "source": { "name": "MetalCharts", "url": "https://metalcharts.org/gold-price-in-gbp" },
-  "perOzGBP": { "gold": 2691.72, "silver": 31.25, "platinum": 992.01 }
+  "source": {
+    "name": "MetalCharts",
+    "url": "https://metalcharts.org/gold-price-in-gbp"
+  },
+  "perOzGBP": {
+    "gold": 2691.72,
+    "silver": 31.25,
+    "platinum": 992.01
+  }
 }
