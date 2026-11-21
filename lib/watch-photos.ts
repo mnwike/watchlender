@@ -1,0 +1,30 @@
+/**
+ * Photographs copied from open-source GitHub projects only where source credits
+ * document reuse rights. Never use a family photo to imply exact reference proof.
+ * All pictures remain illustrative; authentication is performed separately.
+ */
+export interface WatchPhoto {
+  src: string;
+  alt: string;
+  credit: string;
+  sourceUrl: string;
+  license: string;
+}
+export const WATCH_PHOTOS: Record<string, WatchPhoto> = {
+  "rolex:16610": {
+    src: "/watch-photos/rolex-submariner.jpg",
+    alt: "Photograph of a Rolex Submariner wristwatch (illustrative)",
+    credit: "FrankWilliams",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rolex-Submariner.jpg",
+    license: "Public domain",
+  },
+  "omega:31130423001005": {
+    src: "/watch-photos/omega-speedmaster.jpg",
+    alt: "Photograph of an Omega Speedmaster Professional wristwatch (illustrative)",
+    credit: "Daniel Zimmermann",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Classic_Speedy_(24067321725).jpg",
+    license: "CC BY 2.0",
+  },
+};
+export const getWatchPhoto = (brandSlug: string, normalizedReference: string) =>
+  WATCH_PHOTOS[`${brandSlug}:${normalizedReference}`] ?? null;
