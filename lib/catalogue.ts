@@ -104,3 +104,9 @@ export const related = (w: Watch, n = 4) =>
     .slice(0, n);
 
 export const fullName = (w: Watch) => `${w.brand} ${w.model} ${w.referenceDisplay}`;
+
+export interface FamilySummary { brand: BrandSummary; family: string; slug: string; watches: Watch[] }
+export const FAMILIES: FamilySummary[] = BRANDS.flatMap((b) =>
+  b.families.map((family) => ({ brand: b, family, slug: slugify(family), watches: WATCHES.filter((w) => w.brandSlug === b.slug && w.family === family) })),
+);
+export const getFamily = (brandSlug: string, familySlug: string) => FAMILIES.find((f) => f.brand.slug === brandSlug && f.slug === familySlug);

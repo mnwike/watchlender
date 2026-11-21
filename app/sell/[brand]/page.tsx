@@ -2,7 +2,7 @@ import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BRANDS, getBrand, watchesByBrand } from "@/lib/catalogue";
+import { BRANDS, FAMILIES, getBrand, watchesByBrand } from "@/lib/catalogue";
 import { BRAND_NOTES } from "@/data/brand-notes";
 import { SITE } from "@/lib/site";
 import LeadForm from "@/components/LeadForm";
@@ -50,7 +50,8 @@ export default async function SellBrand({ params }: { params: P }) {
           <h2>Your three options</h2>
           <ThreeWaysTable />
           <h2>{b.name} models we look at</h2>
-          <p>{b.families.join(", ")}, and other {b.name} models. If yours is not in <Link href={`/watches/${b.slug}`}>our {b.name} catalogue</Link> yet, describe it in the form.</p>
+          <div className="filters">{FAMILIES.filter((f) => f.brand.slug === b.slug).map((f) => <Link key={f.slug} className="chip" href={`/sell/${b.slug}/${f.slug}`}>Sell my {b.name} {f.family}</Link>)}</div>
+          <p>We also look at other {b.name} models. If yours is not in <Link href={`/watches/${b.slug}`}>our {b.name} catalogue</Link> yet, describe it in the form.</p>
           <section className="faq" style={{ padding: 0 }}>
             <h2>Selling a {b.name}: common questions</h2>
             {faqs.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}

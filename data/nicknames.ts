@@ -90,6 +90,36 @@ export const NICKNAMES: Nickname[] = [
     identify: ["Slate grey dial with black Roman numerals edged in green.", "Found on several Datejust references, so the reference alone does not confirm it.", "Check the dial against the papers if you are unsure which version you have."],
     refs: ["126300", "126334", "126333", "126331"], related: ["panda", "pepsi"],
   },
+  {
+    slug: "cookie-monster", name: "Cookie Monster", model: "Submariner Date",
+    summary: "The Rolex Cookie Monster is the white gold Submariner Date reference 126619LB, introduced in 2020, with a black dial and a blue ceramic bezel. It replaced the all-blue Smurf.",
+    identify: ["Solid white gold case and bracelet.", "Black dial with a blue Cerachrom bezel.", "41 mm case, reference 126619LB."],
+    refs: ["126619LB"], related: ["smurf", "bluesy"],
+  },
+  {
+    slug: "coke", name: "Coke", model: "GMT-Master II",
+    summary: "The Rolex Coke is a GMT-Master II with a red and black bezel. The colour scheme first appeared in the 1980s and is best known on reference 16710, which could be fitted with a Coke, Pepsi or all-black aluminium insert.",
+    identify: ["Red and black aluminium 24-hour bezel insert.", "Black dial, steel case.", "Because inserts on the 16710 are interchangeable, check that the insert on yours is original to the watch."],
+    refs: ["16710"], otherRefs: "The first Coke was reference 16760, sometimes called the Fat Lady.", related: ["pepsi", "batman"],
+  },
+  {
+    slug: "john-mayer", name: "John Mayer", model: "Cosmograph Daytona",
+    summary: "The John Mayer is the yellow gold Cosmograph Daytona reference 116508 with a green dial, introduced in 2016. It takes its nickname from the musician and watch collector who praised it.",
+    identify: ["Solid yellow gold case and bracelet with a gold bezel.", "Green dial with gold sub-dial rings.", "Reference 116508. Other dial colours of the same reference are not the John Mayer."],
+    refs: ["116508"], related: ["panda"],
+  },
+  {
+    slug: "polar", name: "Polar", model: "Explorer II",
+    summary: "Polar is the nickname for the Rolex Explorer II with a white dial. The current reference is 226570; earlier versions are 216570 and 16570. Each reference was also made with a black dial.",
+    identify: ["White dial with black-outlined hour markers.", "Fixed steel bezel with a 24-hour scale and an orange 24-hour hand on recent references.", "Steel case: 42 mm on 226570 and 216570, 40 mm on 16570."],
+    refs: ["226570", "216570"], otherRefs: "The 40 mm reference 16570 was also made with a Polar dial.", related: ["panda"],
+  },
+  {
+    slug: "president", name: "President", model: "Day-Date",
+    summary: "The Rolex President is the Day-Date, made only in gold or platinum. Strictly, President is the name of its three-link bracelet with semi-circular links, but collectors use it for the whole watch.",
+    identify: ["Day of the week spelled out in full at 12 o'clock, with the date at 3.", "Precious metal only: yellow, white or Everose gold, or platinum.", "The President bracelet with a concealed clasp."],
+    refs: ["228238", "228235", "228239", "228206", "128238"], related: ["wimbledon"],
+  },
 ];
 
 export const getNickname = (slug: string) => NICKNAMES.find((n) => n.slug === slug);
