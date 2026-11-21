@@ -1,8 +1,8 @@
 import Link from "next/link";
+import HomeHeroPhoto from "@/components/HomeHeroPhoto";
 import { BRANDS, WATCHES } from "@/lib/catalogue";
 import { SITE } from "@/lib/site";
 import WatchCard, { SearchBar } from "@/components/WatchCard";
-import PageImage from "@/components/PageImage";
 import { ThreeWaysTable } from "@/components/ThreeWays";
 import { GUIDES } from "@/data/guides";
 import { NICKNAMES } from "@/data/nicknames";
@@ -22,7 +22,7 @@ export default function Home() {
             <SearchBar large />
             <small>{WATCHES.length} references across {BRANDS.length} brands, and growing.</small>
           </div>
-          <div className="hero-art"><PageImage name="home" className="hero-photo" priority position="70% 50%" /></div>
+          <HomeHeroPhoto />
         </div>
       </div>
 
@@ -70,7 +70,7 @@ export default function Home() {
 
       <section className="alt">
         <div className="wrap">
-          <div className="section-head"><h2>Popular watches</h2><Link href="/watches">Search the catalogue</Link></div>
+          <div className="section-head"><h2>Popular watches</h2><div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}><Link href="/watch-photo-gallery">Watch photo gallery</Link><Link href="/watches">Search the catalogue</Link></div></div>
           <div className="grid">{featured.map((w) => <WatchCard key={w.id} watch={w} />)}</div>
         </div>
       </section>
