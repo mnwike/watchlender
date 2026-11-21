@@ -14,7 +14,7 @@ export function PriceTable({ metal }: { metal: Metal }) {
     <div className="table-scroll">
       <table className="compare">
         <thead><tr><th>Purity</th><th>Hallmark</th><th>Per gram</th><th>Per troy ounce</th></tr></thead>
-        <tbody>{PURITIES[metal].map((p) => <tr key={p.mark} id={p.label.toLowerCase().replace(/\s+/g, "-")}><td>{p.label}</td><td>{p.mark}</td><td>{gbp(pricePerGram(perOz) * p.fineness)}</td><td>{gbp(perOz * p.fineness)}</td></tr>)}</tbody>
+        <tbody>{PURITIES[metal].map((p) => <tr key={p.mark} id={p.label.toLowerCase().replace(/\s+/g, "-")}><td>{metal === "gold" ? <Link href={`/gold-price-per-gram/${p.label}`}>{p.label}</Link> : p.label}</td><td>{p.mark}</td><td>{gbp(pricePerGram(perOz) * p.fineness)}</td><td>{gbp(perOz * p.fineness)}</td></tr>)}</tbody>
       </table>
     </div>
   );
@@ -67,7 +67,7 @@ export function PricePerGramPage({ metal }: { metal: Metal }) {
               <h2>Gold coins</h2>
               <div className="table-scroll"><table className="compare"><thead><tr><th>Coin</th><th>Fine gold</th><th>Gold value at spot</th></tr></thead>
                 <tbody>{GOLD_COINS.map((c) => <tr key={c.name}><td>{c.name}</td><td>{c.fineGrams.toFixed(2)} g</td><td>{gbp(c.fineGrams * perG)}</td></tr>)}</tbody></table></div>
-              <p style={{ fontSize: ".85rem", color: "var(--muted)" }}>Gold content only. Coins in good condition often sell for more than their gold value.</p>
+              <p style={{ fontSize: ".85rem", color: "var(--muted)" }}>Gold content only. Coins in good condition often sell for more than their gold value. See <Link href="/gold-sovereign-value">sovereign value</Link>, <Link href="/krugerrand-value">Krugerrand value</Link> and <Link href="/sell-gold-coins">sell gold coins</Link>.</p>
             </>
           )}
           <h2>Work out your own {metal}</h2>
@@ -120,7 +120,7 @@ export function SellMetalPage({ metal }: { metal: Metal }) {
             <li>Keep items with stones or by well-known makers separate: they can be worth more than their metal. See <Link href="/sell-jewellery">sell jewellery</Link>.</li>
             <li>Compare offers. Buyers pay different proportions of the spot value.</li>
           </ul>
-          <p>Also: {(["gold", "silver", "platinum"] as Metal[]).filter((m) => m !== metal).map((m, i) => <span key={m}>{i > 0 ? " · " : ""}<Link href={`/sell-${m}`}>sell {m}</Link></span>)} · <Link href={`/${metal}-price-per-gram`}>{metal} price per gram</Link></p>
+          <p>Also: {(["gold", "silver", "platinum"] as Metal[]).filter((m) => m !== metal).map((m, i) => <span key={m}>{i > 0 ? " · " : ""}<Link href={`/sell-${m}`}>sell {m}</Link></span>)} · <Link href={`/${metal}-price-per-gram`}>{metal} price per gram</Link>{metal !== "platinum" && <> · <Link href={`/scrap-${metal}-price`}>scrap {metal} price</Link></>}{metal === "gold" && <> · <Link href="/sell-gold-coins">sell gold coins</Link></>}</p>
           <section className="faq" style={{ padding: 0 }}>
             <h2>Selling {metal}: common questions</h2>
             {faqs.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}

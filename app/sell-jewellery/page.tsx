@@ -36,6 +36,8 @@ export default function Page() {
             <li>The maker, if it is signed, and whether you have the box and papers.</li>
             <li>Its condition, and a rough weight if it is mainly gold.</li>
           </ul>
+          <h2>Rings</h2>
+          <p>See <Link href="/sell-engagement-ring">sell an engagement ring</Link> and <Link href="/sell-diamond-ring">sell a diamond ring</Link> for how rings are valued.</p>
           <h2>Mainly gold?</h2>
           <p>Plain gold jewellery is usually valued by weight. Use the <Link href="/gold-price-calculator">gold calculator</Link> to see its metal value, or go to <Link href="/sell-gold">sell gold</Link>.</p>
           <h2>Your options</h2>
