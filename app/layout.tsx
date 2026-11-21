@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="top"><div className="wrap"><span>Sell now, list or borrow, in one place</span><span>Serving {SITE.area}</span></div></div>
         <header className="site-header">
           <div className="wrap">
-            <Link href="/" className="brand-logo" aria-label="WatchLender home"><img src="/branding/watchlender-wordmark-white.svg" alt="WatchLender" width={250} height={47} /></Link>
+            <Link href="/" className="brand-logo" aria-label="WatchLender home"><img src="/branding/watchlender-logo-white.png" alt="WatchLender" width={164} height={60} /></Link>
             <SearchBar />
             <nav className="nav" aria-label="Main">
               <Link href="/sell-my-watch">Sell</Link>
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="wrap">
             <div className="cols">
               <div>
-                <Link href="/" className="footer-brand-logo" aria-label="WatchLender home"><img src="/branding/watchlender-wordmark-white.svg" alt="WatchLender" width={230} height={43} /></Link>
+                <Link href="/" className="footer-brand-logo" aria-label="WatchLender home"><img src="/branding/watchlender-logo-white.png" alt="WatchLender" width={197} height={72} /></Link>
                 <p>An independent catalogue of luxury watches for owners who want to sell, list or borrow against their watch, and for buyers looking for one. {SITE.area}.</p>
               </div>
               <div>

@@ -219,7 +219,7 @@ footer .legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: 26px; p
 
 /* White text-only WatchLender identity for dark header and footer. */
 .brand-logo, .footer-brand-logo { display: inline-flex; align-items: center; flex-shrink: 0; line-height: 0; }
-.brand-logo img { display: block; width: clamp(170px, 19vw, 235px); height: auto; }
+.brand-logo img { display: block; width: clamp(140px, 14vw, 172px); height: auto; }
 .footer-brand-logo img { display: block; width: 205px; max-width: 100%; height: auto; margin: 0 0 14px; }
 .brand-logo:focus-visible, .footer-brand-logo:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
 
