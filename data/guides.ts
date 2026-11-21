@@ -84,6 +84,45 @@ export const GUIDES: Guide[] = [
       { h: "Protect yourself", list: ["Do not hand over or post the watch until you are certain how and when you will be paid.", "Be wary of buyers who overpay and ask for a refund, or who want to move the conversation to an unusual payment method.", "If you send the watch anywhere, use insured, tracked delivery and keep the proof.", "Keep a record of the serial number and your photographs."] },
     ],
   },
+  {
+    slug: "do-rolex-watches-hold-their-value",
+    title: "Do Rolex and Tudor watches hold their value?",
+    description: "Why some luxury watches keep their value better than others, what that means for Rolex and Tudor owners, and what it does not guarantee.",
+    intro: "Rolex has a reputation for holding value better than almost any other watch brand, and Tudor, its sister brand, is often mentioned in the same breath. The reputation is broadly deserved, but it varies a great deal by model, and it is not a promise about any individual watch.",
+    sections: [
+      { h: "Why some watches hold value", p: ["Value retention comes from demand outstripping supply over a long period. Brands that are widely recognised, produce consistent designs and limit how many watches reach the market tend to see stronger pre-owned prices."] },
+      { h: "Rolex", p: ["Steel sports models such as the Submariner, GMT-Master II and Daytona have historically been the strongest performers, at times trading above their retail price. Dress models, two-tone and precious metal watches usually lose more from retail, though they still tend to do better than comparable watches from many other brands."] },
+      { h: "Tudor", p: ["Tudor watches cost less new and generally lose a larger share of their retail price than the most sought-after Rolex models. Popular references such as the Black Bay 58 tend to hold up better than less well-known ones."] },
+      { h: "What changes the answer for your watch", list: ["The exact reference and dial: small differences matter.", "Condition, and whether the case has been polished.", "Box, papers and service history.", "Whether the model is current or discontinued, and how demand has moved since you bought it."] },
+      { h: "What it does not mean", p: ["Past performance is not a guarantee. Pre-owned prices for many models fell from their peak in recent years after a sharp rise. A watch is worth what a buyer will pay now, which is why a current valuation matters more than what you paid or what a model sold for at its peak."] },
+    ],
+  },
+  {
+    slug: "how-to-spot-a-fake-rolex",
+    title: "How to spot a fake Rolex: checks you can do yourself",
+    description: "Practical checks for telling a genuine Rolex from a counterfeit, their limits, and why professional authentication still matters.",
+    intro: "Counterfeit Rolex watches range from obvious to very convincing. A few simple checks will catch the poor ones. The best fakes can only be ruled out by a watchmaker opening the case, which is why any serious buyer or lender will insist on inspection.",
+    sections: [
+      { h: "Checks you can do without tools", list: ["Weight: a genuine Rolex feels solid. Many fakes are noticeably light.", "Seconds hand: on a mechanical Rolex it sweeps smoothly rather than ticking once a second.", "Text and printing: dial text should be crisp and evenly spaced, with no smudging or misalignment.", "Date magnification: the Cyclops lens on date models should enlarge the date clearly and sit centred over it.", "Crown and case back: most Rolex models have a plain, solid case back with no engraving or glass window.", "Bracelet and clasp: links should be tight and well finished, and the clasp engraving sharp."] },
+      { h: "Reference and serial numbers", p: ["The reference and serial should be finely and cleanly engraved, and should match the paperwork. The reference should also match the watch in front of you: the right metal, bezel and dial for that number. Our catalogue lists the specifications for each reference."] },
+      { h: "Paperwork is not proof", p: ["Boxes and warranty cards are counterfeited too. Papers support a watch's history, but they do not replace examining the watch itself."] },
+      { h: "The limits of checking it yourself", p: ["High-quality counterfeits can pass every external check. So can genuine watches fitted with non-original dials, bezels or movement parts, which affects value. Only inspection of the movement by someone qualified settles the question."] },
+      { h: "If you are selling or borrowing", p: ["Expect the watch to be authenticated before any offer is confirmed. That protects you as well: it means the figure you are given is based on what the watch really is."] },
+    ],
+  },
+  {
+    slug: "sea-dweller-vs-submariner",
+    title: "Rolex Sea-Dweller vs Submariner: the differences",
+    description: "How the Rolex Sea-Dweller and Submariner differ in size, depth rating and features, and how to tell which one you have.",
+    intro: "The Sea-Dweller began as a deeper-diving development of the Submariner, and the two still look alike at a glance. The differences are in size, depth rating and one valve on the side of the case.",
+    sections: [
+      { h: "Size", p: ["The current Submariner has a 41 mm case. The current Sea-Dweller is 43 mm and thicker, and the Deepsea is larger again at 44 mm. On the wrist the Sea-Dweller is the noticeably heavier watch."] },
+      { h: "Depth rating", p: ["The Submariner is rated to 300 metres. The Sea-Dweller is rated to 1,220 metres and the Deepsea to 3,900 metres. Few owners will ever need the difference, but it explains the thicker case and crystal."] },
+      { h: "Helium escape valve", p: ["The Sea-Dweller and Deepsea have a helium escape valve, a small circular valve set into the left side of the case, designed for saturation diving. The Submariner does not have one. It is the quickest way to tell the two apart."] },
+      { h: "References to look for", list: ["Submariner: 124060 (no date) and 126610LN (date) are the current steel references.", "Sea-Dweller: 126600 in steel and 126603 in steel and yellow gold.", "Deepsea: 136660, and 136668LB in yellow gold."] },
+      { h: "Which is worth more?", p: ["It depends on the reference, condition and demand at the time, not simply on which model is higher in the range. Send us the details of yours for a current indicative figure."] },
+    ],
+  },
 ];
 
 export const getGuide = (slug: string) => GUIDES.find((g) => g.slug === slug);

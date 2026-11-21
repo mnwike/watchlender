@@ -2,9 +2,10 @@ import Link from "next/link";
 import { BRANDS, WATCHES } from "@/lib/catalogue";
 import { SITE } from "@/lib/site";
 import WatchCard, { SearchBar } from "@/components/WatchCard";
-import WatchArt from "@/components/WatchArt";
+import PageImage from "@/components/PageImage";
 import { ThreeWaysTable } from "@/components/ThreeWays";
 import { GUIDES } from "@/data/guides";
+import { NICKNAMES } from "@/data/nicknames";
 
 const FEATURED = ["126610LN", "126710BLRO", "126500LN", "5711/1A-010", "15500ST.OO.1220ST.01", "310.30.42.50.01.001", "WSSA0018", "M79030N-0001"];
 
@@ -21,7 +22,7 @@ export default function Home() {
             <SearchBar large />
             <small>{WATCHES.length} references across {BRANDS.length} brands, and growing.</small>
           </div>
-          <div className="hero-art"><WatchArt watch={{ brand: "", model: "hero", material: "Steel and yellow gold", dial: "Green", bezel: "Green" }} size={250} /></div>
+          <div className="hero-art"><PageImage name="home" className="hero-photo" priority position="70% 50%" /></div>
         </div>
       </div>
 
@@ -82,6 +83,13 @@ export default function Home() {
             <li><h3>Choose your route</h3><p>Sell now, list it at your own price, or borrow against it. Tell us the condition and whether you have the box and papers.</p></li>
             <li><h3>We come back to you</h3><p>We review your enquiry and contact you. Any figure is provisional until the watch has been inspected.</p></li>
           </ol>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head"><h2>Know it by its nickname?</h2><Link href="/rolex-nicknames">All Rolex nicknames</Link></div>
+          <div className="filters">{NICKNAMES.map((n) => <Link key={n.slug} className="chip" href={`/rolex/${n.slug}`}>Rolex {n.name}</Link>)}</div>
         </div>
       </section>
 

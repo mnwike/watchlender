@@ -1,3 +1,4 @@
+import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
@@ -17,6 +18,7 @@ export default function ListMyWatch() {
         <h1>List your watch for sale</h1>
         <p>Set your asking price and list your watch for buyers to find. If you would rather sell quickly, you can <Link href="/sell-my-watch">sell it to us</Link> instead.</p>
       </div>
+      <PageImage name="list" />
       <div className="detail">
         <div className="prose">
           <h2>How listing works</h2>

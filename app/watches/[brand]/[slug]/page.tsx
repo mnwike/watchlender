@@ -8,6 +8,7 @@ import WatchCard from "@/components/WatchCard";
 import LeadForm from "@/components/LeadForm";
 import { listingsForWatch } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
+import { NICKNAMES } from "@/data/nicknames";
 
 type P = Promise<{ brand: string; slug: string }>;
 export const dynamicParams = false;
@@ -65,7 +66,10 @@ export default async function WatchPage({ params }: { params: P }) {
       <div className="page-head">
         <span className="eyebrow">{w.brand} · {w.family}</span>
         <h1>{w.model} <span style={{ whiteSpace: "nowrap" }}>{w.referenceDisplay}</span></h1>
-        <p>Own this watch? Sell it, or use it as security for a loan. Tell us about yours and we&apos;ll come back to you.</p>
+        {w.brandSlug === "rolex" && NICKNAMES.filter((n) => n.refs.includes(w.referenceDisplay)).length > 0 && (
+          <p>Also known as: {NICKNAMES.filter((n) => n.refs.includes(w.referenceDisplay)).map((n, i) => <span key={n.slug}>{i > 0 ? ", " : ""}<Link href={`/rolex/${n.slug}`}>Rolex {n.name}</Link></span>)}</p>
+        )}
+        <p>Own this watch? Sell it, list it, or use it as security for a loan. Tell us about yours and we&apos;ll come back to you.</p>
         <a className="btn primary mobile-cta" href="#enquire">Start my enquiry</a>
       </div>
       <div className="detail">

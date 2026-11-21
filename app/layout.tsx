@@ -49,6 +49,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/list-my-watch">List your watch for sale</Link>
                 <Link href="/for-sale">Watches for sale</Link>
                 <Link href="/watch-loans">Loans against watches</Link>
+                <Link href="/pawn-my-watch">Pawn my watch</Link>
+                <Link href="/rolex-nicknames">Rolex nicknames</Link>
                 <Link href="/watch-valuation">Watch valuation</Link>
                 <Link href="/sell-my-watch-london">Sell my watch in London</Link>
                 <Link href="/guides">Guides</Link>

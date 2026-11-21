@@ -1,3 +1,4 @@
+import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -42,6 +43,7 @@ export default async function SellBrand({ params }: { params: P }) {
         <h1>Sell my {b.name} watch</h1>
         <p>Sell your {b.name} now, list it at your own price, or borrow against it. Three options in one place, so you can pick the one that suits you.</p>
       </div>
+      <PageImage name="sell" position="80% 60%" />
       <div className="detail">
         <div className="prose" style={{ maxWidth: "none" }}>
           {BRAND_NOTES[b.slug] && <p>{BRAND_NOTES[b.slug]}</p>}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { liveListings } from "@/lib/listings";
+import PageImage from "@/components/PageImage";
 import ListingCard from "@/components/ListingCard";
 import { SITE } from "@/lib/site";
 
@@ -18,6 +19,7 @@ export default function ForSale() {
         <h1>Watches for sale</h1>
         <p>Watches listed by their owners and reviewed by us before they appear. Enquire on any listing and we&apos;ll put you in touch.</p>
       </div>
+      <PageImage name="list" />
       {listings.length === 0 ? (
         <div className="empty">
           <h2>No watches are listed yet</h2>

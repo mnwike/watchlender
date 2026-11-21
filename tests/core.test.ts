@@ -117,3 +117,13 @@ describe("manufacturer-sourced records", () => {
     expect(WATCHES.find((w) => w.referenceDisplay === "116610LN")!.status).toBe("unverified");
   });
 });
+
+import { NICKNAMES } from "@/data/nicknames";
+describe("nicknames", () => {
+  it("every listed reference exists in the Rolex catalogue", () => {
+    for (const n of NICKNAMES) for (const r of n.refs) expect(WATCHES.some((w) => w.brandSlug === "rolex" && w.referenceDisplay === r), `${n.slug} ${r}`).toBe(true);
+  });
+  it("related nicknames resolve", () => {
+    for (const n of NICKNAMES) for (const s of n.related ?? []) expect(NICKNAMES.some((x) => x.slug === s), `${n.slug} -> ${s}`).toBe(true);
+  });
+});

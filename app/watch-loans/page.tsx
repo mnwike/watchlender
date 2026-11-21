@@ -1,3 +1,4 @@
+import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
@@ -18,10 +19,12 @@ export default function Loans() {
         <h1>Loans against luxury watches</h1>
         <p>A loan secured on your watch lets you raise funds without selling it. {waitlist ? "We are not taking applications yet. Register your interest and we'll contact you when the service opens." : "Start an enquiry and we'll explain how it works before you commit to anything."}</p>
       </div>
+      <PageImage name="borrow" position="50% 60%" />
       <div className="detail">
         <div className="prose">
           <h2>How a watch-backed loan works</h2>
           <p>Your watch is inspected and authenticated, and the amount available depends on its assessed value. The watch is held securely for the term of the loan and returned to you when the loan is repaid. If the loan is not repaid, the watch may be sold to settle it.</p>
+          <p>Looking to pawn a watch? See <Link href="/pawn-my-watch">pawn my watch</Link>.</p>
           <h2>Before you decide</h2>
           <p>Borrowing against a watch is a credit agreement. Make sure you understand the cost and the terms, and consider whether <Link href="/sell-my-watch">selling the watch</Link> would suit you better.</p>
           {waitlist && <p className="note">Registering your interest is not an application for credit and no offer of credit is made on this page.</p>}

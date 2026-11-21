@@ -1,3 +1,4 @@
+import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
@@ -6,8 +7,8 @@ import { BRANDS } from "@/lib/catalogue";
 import { ThreeWaysTable } from "@/components/ThreeWays";
 
 export const metadata: Metadata = {
-  title: "Sell my watch in London: sell now, list or borrow",
-  description: "Sell your luxury watch in London. Get an offer, list it at your own price, or borrow against it, all in one place.",
+  title: "Sell my watch in London: watch buyers, listings and loans",
+  description: "Watch buyers in London. Sell your luxury watch for an offer, list it at your own price, or borrow against it, all in one place.",
   alternates: { canonical: "/sell-my-watch-london/" },
 };
 
@@ -20,6 +21,7 @@ export default function London() {
         <h1>Sell my watch in London</h1>
         <p>If you are in London and have a luxury watch to sell, you have three options with us: sell it now, list it at your own price, or borrow against it.</p>
       </div>
+      <PageImage name="london" position="50% 45%" />
       <div className="detail">
         <div className="prose" style={{ maxWidth: "none" }}>
           <h2>Your three options</h2>

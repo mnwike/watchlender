@@ -1,3 +1,4 @@
+import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
@@ -27,6 +28,7 @@ export default function Valuation() {
         <h1>Watch valuation: how much is my watch worth?</h1>
         <p>Tell us which watch you have and what condition it is in. We&apos;ll reply with an indicative figure, and you can then decide whether to sell, list or borrow.</p>
       </div>
+      <PageImage name="valuation" position="50% 60%" />
       <div className="detail">
         <div className="prose" style={{ maxWidth: "none" }}>
           <h2>What we need to value your watch</h2>

@@ -1,3 +1,4 @@
+import PageImage from "@/components/PageImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
@@ -19,6 +20,7 @@ export default function Sell() {
         <h1>Sell my watch</h1>
         <p>Tell us which watch you have and what condition it is in. We review every enquiry and contact you with an offer, which is confirmed once the watch has been inspected.</p>
       </div>
+      <PageImage name="sell" position="80% 60%" />
       <div className="detail">
         <div className="prose" style={{ maxWidth: "none" }}>
           <h2>Sell now, list or borrow</h2>
