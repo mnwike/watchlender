@@ -11,6 +11,7 @@ export default function Privacy() {
       <h1>Privacy notice</h1>
       <p><strong>Draft, to be completed before launch.</strong></p>
       <p>When you send an enquiry we collect your name, contact details, and the details of the watch you tell us about. We use them only to respond to your enquiry.</p>
+      <p>With your consent we use Google Analytics cookies to understand how the site is used. They are not set unless you accept, and you can change your choice at any time using “Cookie settings” at the foot of any page.</p>
       <p>We do not sell your details. You can ask us to delete them at any time{SITE.email ? ` by emailing ${SITE.email}` : ""}.</p>
     </div>
   );

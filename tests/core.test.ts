@@ -149,3 +149,23 @@ describe("precious metal maths", () => {
     expect(PURITIES.silver[0].fineness).toBe(0.925);
   });
 });
+
+// @ts-expect-error plain JS module
+import { mergePrices, parseCsv } from "../scripts/fetch-prices.mjs";
+describe("price feed from the Google Sheet", () => {
+  const current = { asOf: "2026-11-20", source: { name: "x", url: "y" }, perOzGBP: { gold: 2700, silver: 31, platinum: 990 } };
+  const csv = (g: string, d = "2026-11-21") => `key,gbp_per_troy_oz,as_of,source,notes\ngold,${g},${d},u,"note, with comma"\nsilver,31.25,${d},u,\nplatinum,992.01,${d},u,`;
+  it("accepts sane prices and takes the date", () => {
+    const { next, problems } = mergePrices(current, parseCsv(csv("2691.72")));
+    expect(problems).toEqual([]);
+    expect(next.perOzGBP.gold).toBe(2691.72);
+    expect(next.asOf).toBe("2026-11-21");
+  });
+  it("ignores a typo-sized jump, blanks and bad dates, keeping the old value", () => {
+    expect(mergePrices(current, parseCsv(csv("26917.2"))).next.perOzGBP.gold).toBe(2700);
+    expect(mergePrices(current, parseCsv(csv(""))).next.perOzGBP.gold).toBe(2700);
+    const bad = mergePrices(current, parseCsv(csv("2691.72", "21/11/2026")));
+    expect(bad.next.asOf).toBe("2026-11-20");
+    expect(bad.problems.length).toBe(3);
+  });
+});

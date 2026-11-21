@@ -4,7 +4,8 @@ import Image from "next/image";
 import { GALLERY_PHOTOS } from "@/data/watch-photo-gallery";
 
 export const metadata: Metadata = {
-  title: "Watch photo gallery | WatchLender",
+  title: "Watch photo gallery",
+  alternates: { canonical: "/watch-photo-gallery/" },
   description: "An attributed gallery of watch photographs, with source and licence information. Pictures illustrate watch models, not watches offered for sale.",
 };
 

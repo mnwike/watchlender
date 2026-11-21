@@ -4,10 +4,11 @@
   "description": "",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/postbuild.mjs",
     "start": "next start",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prices": "node scripts/fetch-prices.mjs"
   },
   "keywords": [],
   "author": "",

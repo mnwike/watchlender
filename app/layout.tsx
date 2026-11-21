@@ -5,14 +5,21 @@ import { SITE } from "@/lib/site";
 import { BRANDS } from "@/lib/catalogue";
 import { SearchBar } from "@/components/WatchCard";
 import EnquiryPopup from "@/components/EnquiryPopup";
+import Consent, { CookieSettingsLink } from "@/components/Consent";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} | ${SITE.tagline}`, template: `%s | ${SITE.name}` },
   description: `Sell your luxury watch now, list it at your own price, or borrow against it, all in one place. Serving ${SITE.area}.`,
+  verification: { google: "W6yru6EQThHbsj-QoCYjRfvSMFzDmibTuEqfPrvo7Bk" },
   openGraph: { siteName: SITE.name, type: "website", locale: "en_GB" },
   icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }] },
 };
+
+const SITE_SCHEMA = [
+  { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE.url}/#organization`, name: SITE.name, url: `${SITE.url}/`, logo: `${SITE.url}/branding/watchlender-logo-white.png`, description: "Sell a luxury watch, list it for sale or borrow against it, plus gold, silver and jewellery.", areaServed: "GB" },
+  { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE.url}/#website`, name: SITE.name, url: `${SITE.url}/`, inLanguage: "en-GB", publisher: { "@id": `${SITE.url}/#organization` }, potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${SITE.url}/watches/?q={search_term_string}` }, "query-input": "required name=search_term_string" } },
+];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -63,7 +70,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/sell-my-watch-london">Sell my watch in London</Link>
                 <Link href="/guides">Guides</Link>
                 <Link href="/watches">Browse all watches</Link>
+                <Link href="/faq">FAQ</Link>
                 <Link href="/privacy">Privacy notice</Link>
+                <CookieSettingsLink />
               </div>
             </div>
             <p className="legal">
@@ -73,6 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </footer>
         <EnquiryPopup endpoint={SITE.leadEndpoint} />
+        <Consent tagId={SITE.googleTagId} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA).replace(/</g, "\\u003c") }} />
       </body>
     </html>
   );

@@ -7,6 +7,8 @@ import { ThreeWaysTable } from "@/components/ThreeWays";
 import { GUIDES } from "@/data/guides";
 import { NICKNAMES, nickBrand, nickUrl } from "@/data/nicknames";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 const FEATURED = ["126610LN", "126710BLRO", "126500LN", "5711/1A-010", "15500ST.OO.1220ST.01", "310.30.42.50.01.001", "WSSA0018", "M79030N-0001"];
 
 export default function Home() {

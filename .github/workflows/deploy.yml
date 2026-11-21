@@ -3,8 +3,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "20 7 * * *" # daily, after the price sheet is updated
 permissions:
-  contents: read
+  contents: write # the build saves the day's accepted prices back to the repo
   pages: write
   id-token: write
 concurrency:
@@ -20,12 +22,23 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Refresh metal prices from the Google Sheet
+        run: node scripts/fetch-prices.mjs
       - run: npm test
       - run: npm run build
         env:
           NEXT_PUBLIC_LEAD_ENDPOINT: ${{ vars.LEAD_ENDPOINT }}
           NEXT_PUBLIC_LOANS_MODE: ${{ vars.LOANS_MODE }}
           NEXT_PUBLIC_FCA_STATEMENT: ${{ vars.FCA_STATEMENT }}
+      - name: Save accepted prices so tomorrow's sanity check compares with today
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if ! git diff --quiet data/metal-prices.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -qm "Daily metal prices from the price sheet" data/metal-prices.json
+            git push || echo "could not save prices; site still deploys"
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
