@@ -29,7 +29,7 @@ export default function Home() {
               width={1600}
               height={1009}
               fetchPriority="high"
-              style={{ objectFit: "cover", objectPosition: "center center" }}
+              style={{ objectFit: "cover", objectPosition: "center center", backgroundImage: "url('/watch-photos/rolex-submariner.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
             />
           </div>
         </div>
