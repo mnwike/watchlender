@@ -17,5 +17,6 @@ export const SITE = {
   // Empty = forms show "not switched on yet" instead of pretending to send.
   // GA4 measurement ID for the "WatchLender website" stream. Loaded only after cookie consent.
   googleTagId: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "G-Y3PPV27CSF",
-  leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT ?? "",
+  // Google Apps Script web app in Martin's account: emails each enquiry to martin@nwike.com.
+  leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT || "https://script.google.com/macros/s/AKfycbyX5Du0k1KPx60QjATf5sx03bzjoTpZ8KJRumbxBSNb2rjtjJJtOXLwMp4YI-ux4ZQ/exec",
 };
