@@ -12,9 +12,18 @@ const METAL: [RegExp, string, string][] = [
 const COLOUR: Record<string, string> = {
   black: "#15171a", blue: "#1d3f73", green: "#0f5a3c", white: "#f4f2ec", silver: "#d9dbdd", grey: "#70757b",
   champagne: "#d8c08a", brown: "#5a3a26", cream: "#efe6d2", "ice blue": "#a9d3e0", turquoise: "#59c2c0",
-  pink: "#e6c3c6", skeleton: "#3a3d42",
+  pink: "#e6c3c6", skeleton: "#3a3d42", mint: "#b9dcc4", lavender: "#c9bfe0",
 };
-const colour = (name: string | null | undefined, fallback: string) => (name && COLOUR[name.toLowerCase()]) || fallback;
+const ALIAS: [RegExp, string][] = [
+  [/ice blue/, "ice blue"], [/turquoise/, "turquoise"], [/mint|pistachio/, "mint"], [/lavender/, "lavender"], [/candy pink|pink|sundust/, "pink"],
+  [/chocolate|brown|tiger iron/, "brown"], [/slate|meteorite|grey/, "grey"], [/golden|champagne/, "champagne"], [/beige|cream/, "cream"],
+  [/mother-of-pearl|white/, "white"], [/steel|silver/, "silver"], [/green/, "green"], [/blue/, "blue"], [/black/, "black"],
+];
+const colour = (name: string | null | undefined, fallback: string) => {
+  if (!name) return fallback;
+  const n = name.toLowerCase();
+  return COLOUR[n] ?? COLOUR[ALIAS.find(([re]) => re.test(n))?.[1] ?? ""] ?? fallback;
+};
 
 export default function WatchArt({ watch, size = 220 }: { watch: Pick<Watch, "material" | "dial" | "bezel" | "brand" | "model">; size?: number }) {
   const parts = watch.material.split(/ and /i);
@@ -24,7 +33,7 @@ export default function WatchArt({ watch, size = 220 }: { watch: Pick<Watch, "ma
   const accent = twoTone ? pick(parts[1])[1] : metal;
   const dial = colour(watch.dial, "#15171a");
   const bezel = watch.bezel ? colour(watch.bezel, metal) : twoTone ? accent : metal;
-  const light = ["white", "silver", "champagne", "cream", "ice blue", "pink"].includes(watch.dial.toLowerCase());
+  const light = /white|silver|steel|champagne|golden|cream|beige|ice blue|pink|sundust|mint|pistachio|lavender|mother-of-pearl|turquoise/i.test(watch.dial) && !/^(black|intense black)/i.test(watch.dial);
   const ink = light ? "#1c1e21" : "#f3f1ea";
   const id = `g${Math.abs(hash(watch.model + watch.dial + watch.material))}`;
   return (

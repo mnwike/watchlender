@@ -34,7 +34,7 @@ export function searchWatches(query: string, opts: { brand?: string; limit?: num
     } else if (qRef.length >= 4 && watch.referenceNormalized.includes(qRef)) {
       score = 400;
     }
-    const hay = tokens(`${watch.brand} ${watch.family} ${watch.model} ${watch.material} ${watch.dial} ${watch.movement}`);
+    const hay = tokens(`${watch.brand} ${watch.family} ${watch.model} ${watch.material} ${watch.dials.join(" ")} ${watch.movement}`);
     const refTokens = tokens(watch.referenceDisplay);
     let matched = 0;
     for (const t of qTokens) {

@@ -1,4 +1,4 @@
-export type LeadIntent = "sell" | "loan" | "list" | "buy";
+export type LeadIntent = "sell" | "loan" | "list" | "buy" | "value";
 
 export interface LeadInput {
   intent: LeadIntent;
@@ -26,7 +26,7 @@ const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().sli
 
 export function validateLead(body: Record<string, unknown>): { ok: true; lead: LeadInput } | { ok: false; errors: string[] } {
   const errors: string[] = [];
-  const intent = (["sell", "loan", "list", "buy"] as const).find((i) => i === body.intent) ?? null;
+  const intent = (["sell", "loan", "list", "buy", "value"] as const).find((i) => i === body.intent) ?? null;
   if (!intent) errors.push("Choose what you would like to do.");
   const name = clean(body.name, 120);
   if (name.length < 2) errors.push("Enter your name.");

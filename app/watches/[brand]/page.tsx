@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: P }): Promise<Metad
   const b = getBrand((await params).brand);
   if (!b) return {};
   return {
-    title: `Sell or borrow against your ${b.name} watch`,
-    description: `Find your ${b.name} by model or reference (${b.families.slice(0, 4).join(", ")}) and sell it or register for a loan against it. ${SITE.area}.`,
+    title: `${b.name} watches: models and reference numbers`,
+    description: `${b.name} models and reference numbers (${b.families.slice(0, 4).join(", ")}). Find your watch, then sell it, list it or borrow against it.`,
     alternates: { canonical: `/watches/${b.slug}/` },
   };
 }
@@ -27,8 +27,8 @@ export default async function BrandPage({ params }: { params: P }) {
     <div className="wrap">
       <nav className="crumbs" aria-label="Breadcrumb"><Link href="/">Home</Link> / <Link href="/watches">Watches</Link> / {b.name}</nav>
       <div className="page-head">
-        <h1>Sell or borrow against your {b.name}</h1>
-        <p>{b.count} {b.name} references in our catalogue. Choose your watch to start an enquiry.</p>
+        <h1>{b.name} watches and reference numbers</h1>
+        <p>{b.count} {b.name} references in our catalogue. Choose your watch to sell it, list it or borrow against it, or go straight to <Link href={`/sell/${b.slug}`}>sell my {b.name}</Link>.</p>
       </div>
       {b.families.map((f) => (
         <section key={f} style={{ padding: "18px 0" }}>

@@ -3,6 +3,8 @@ import { BRANDS, WATCHES } from "@/lib/catalogue";
 import { SITE } from "@/lib/site";
 import WatchCard, { SearchBar } from "@/components/WatchCard";
 import WatchArt from "@/components/WatchArt";
+import { ThreeWaysTable } from "@/components/ThreeWays";
+import { GUIDES } from "@/data/guides";
 
 const FEATURED = ["126610LN", "126710BLRO", "126500LN", "5711/1A-010", "15500ST.OO.1220ST.01", "310.30.42.50.01.001", "WSSA0018", "M79030N-0001"];
 
@@ -14,8 +16,8 @@ export default function Home() {
         <div className="wrap">
           <div>
             <span className="eyebrow">{SITE.area}</span>
-            <h1>Sell your luxury watch, or borrow against it</h1>
-            <p className="lede">Find your exact watch by brand, model or reference number, then tell us whether you want to sell it or use it as security for a loan.</p>
+            <h1>Sell it now, list it, or borrow against it</h1>
+            <p className="lede">Three ways to release the value in your luxury watch, in one place. Find your watch, then choose the route that suits you.</p>
             <SearchBar large />
             <small>{WATCHES.length} references across {BRANDS.length} brands, and growing.</small>
           </div>
@@ -26,22 +28,30 @@ export default function Home() {
       <div className="wrap">
         <div className="choices">
           <div className="choice">
-            <h2>Sell it to us</h2>
+            <h2>Sell now</h2>
             <p>Tell us what you have. We&apos;ll review the details and come back to you with an offer, subject to inspection.</p>
             <Link className="btn primary" href="/sell-my-watch">Get an offer</Link>
           </div>
           <div className="choice">
-            <h2>List it for sale</h2>
+            <h2>List it</h2>
             <p>Set your own asking price and list your watch on WatchLender for buyers to find. Every listing is reviewed first.</p>
             <Link className="btn" href="/list-my-watch">List my watch</Link>
           </div>
           <div className="choice">
-            <h2>Borrow against my watch</h2>
+            <h2>Borrow</h2>
             <p>Keep ownership of your watch and use it as security. {SITE.loansMode === "waitlist" ? "Register your interest and we'll contact you when the service opens." : "Start an enquiry and we'll explain your options."}</p>
             <Link className="btn" href="/watch-loans">{SITE.loansMode === "waitlist" ? "Register interest" : "Enquire about a loan"}</Link>
           </div>
         </div>
       </div>
+
+      <section style={{ paddingBottom: 0 }}>
+        <div className="wrap">
+          <div className="section-head"><h2>One watch, three options</h2><Link href="/guides/sell-list-or-borrow">Which is right for me?</Link></div>
+          <ThreeWaysTable />
+          <p style={{ marginTop: 16 }}>Not sure what your watch is worth? <Link href="/watch-valuation">Request a valuation</Link> first.</p>
+        </div>
+      </section>
 
       <section>
         <div className="wrap">
@@ -69,9 +79,16 @@ export default function Home() {
           <h2>How it works</h2>
           <ol className="steps">
             <li><h3>Find your watch</h3><p>Search by reference number, or browse by brand and model until you find the exact one.</p></li>
-            <li><h3>Tell us about it</h3><p>Condition, box and papers, and whether you want to sell or borrow. It takes a couple of minutes.</p></li>
+            <li><h3>Choose your route</h3><p>Sell now, list it at your own price, or borrow against it. Tell us the condition and whether you have the box and papers.</p></li>
             <li><h3>We come back to you</h3><p>We review your enquiry and contact you. Any figure is provisional until the watch has been inspected.</p></li>
           </ol>
+        </div>
+      </section>
+
+      <section className="alt">
+        <div className="wrap">
+          <div className="section-head"><h2>Guides for watch owners</h2><Link href="/guides">All guides</Link></div>
+          <div className="guide-list">{GUIDES.slice(0, 3).map((g) => <Link key={g.slug} href={`/guides/${g.slug}`}><h3>{g.title}</h3><p>{g.description}</p></Link>)}</div>
         </div>
       </section>
     </>

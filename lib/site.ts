@@ -3,7 +3,7 @@ export const SITE = {
   name: "WatchLender",
   domain: "watchlender.co.uk",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://watchlender.co.uk",
-  tagline: "Sell your luxury watch, or borrow against it",
+  tagline: "Sell now, list or borrow, in one place",
   area: "London and across the UK",
   // TODO(owner): legal entity, registered address, phone, email, ICO registration.
   legalName: "",

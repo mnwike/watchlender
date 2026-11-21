@@ -1,0 +1,110 @@
+// Rolex current catalogue, compiled from the manufacturer's own "all models" pages.
+// One row per base reference; dial options are the configurations listed on the source page.
+// Row: [family, model, reference, sizeMm, material, dials, sourcePath]
+// Not yet covered: Datejust, Day-Date, Lady-Datejust, Air-King (page did not load), discontinued references.
+import type { ManufacturerSet } from "@/lib/catalogue";
+
+const S = "Steel", YG = "Yellow gold", RG = "Rose gold", WG = "White gold", PT = "Platinum", TI = "Titanium";
+const D = ", diamond-set";
+
+export const ROLEX: ManufacturerSet = {
+  brand: "Rolex",
+  sourceName: "rolex.com",
+  sourceBase: "https://www.rolex.com/watches/",
+  checked: "2026-11-21",
+  rows: [
+    ["Submariner", "Submariner Date", "126610LN", 41, S, ["Black"], "submariner/all-models"],
+    ["Submariner", "Submariner Date", "126610LV", 41, S, ["Black"], "submariner/all-models"],
+    ["Submariner", "Submariner", "124060", 41, S, ["Black"], "submariner/all-models"],
+    ["Submariner", "Submariner Date", "126613LB", 41, `${S} and yellow gold`, ["Royal blue"], "submariner/all-models"],
+    ["Submariner", "Submariner Date", "126613LN", 41, `${S} and yellow gold`, ["Black"], "submariner/all-models"],
+    ["Submariner", "Submariner Date", "126618LB", 41, YG, ["Royal blue"], "submariner/all-models"],
+    ["Submariner", "Submariner Date", "126618LN", 41, YG, ["Black"], "submariner/all-models"],
+
+    ["GMT-Master II", "GMT-Master II", "126710BLNR", 40, S, ["Black"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126710GRNR", 40, S, ["Black"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126720VTNR", 40, S, ["Black"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126711CHNR", 40, `${S} and rose gold`, ["Black"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126713GRNR", 40, `${S} and yellow gold`, ["Black"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126715CHNR", 40, RG, ["Black", "Tiger iron"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126718GRNR", 40, YG, ["Black", "Tiger iron"], "gmt-master-ii/all-models"],
+    ["GMT-Master II", "GMT-Master II", "126729VTNR", 40, WG, ["Green ceramic"], "gmt-master-ii/all-models"],
+
+    ["Daytona", "Cosmograph Daytona", "126500LN", 40, S, ["White", "Black"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126503", 40, `${S} and yellow gold`, ["White", "Black", "Golden"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126505", 40, RG, ["Chocolate and black", "Sundust and black", "Black and Sundust"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126506", 40, PT, ["Ice blue"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126508", 40, YG, ["Green and golden", "Golden and black", "Black and champagne", "White", "Black", "Golden"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126509", 40, WG, ["Black and steel", "Bright blue", "Steel and black"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126515LN", 40, RG, ["Sundust and black", "Black and Sundust", "Chocolate and black", "Meteorite and black"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126518LN", 40, YG, ["Black and champagne", "White", "Golden and black", "Black", "Golden", "Turquoise blue and black", "Meteorite and black"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126519LN", 40, WG, ["Meteorite and black", "Black and steel", "Steel and black"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126535TBR", 40, RG + D, ["Sundust"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126538TBR", 40, YG + D, ["Golden"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126539TBR", 40, WG + D, ["Steel"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126579RBR", 40, WG + D, ["Black and white mother-of-pearl"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126589RBR", 40, WG + D, ["White and black mother-of-pearl"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126595TBR", 40, RG + D, ["Sundust"], "cosmograph-daytona/all-models"],
+    ["Daytona", "Cosmograph Daytona", "126598TBR", 40, YG + D, ["Golden"], "cosmograph-daytona/all-models"],
+
+    ["Explorer", "Explorer 36", "124270", 36, S, ["Black"], "explorer/all-models"],
+    ["Explorer", "Explorer 36", "124273", 36, `${S} and yellow gold`, ["Black"], "explorer/all-models"],
+    ["Explorer", "Explorer 40", "224270", 40, S, ["Black"], "explorer/all-models"],
+
+    ["Sea-Dweller", "Sea-Dweller", "126600", 43, S, ["Black"], "sea-dweller/all-models"],
+    ["Sea-Dweller", "Sea-Dweller", "126603", 43, `${S} and yellow gold`, ["Black"], "sea-dweller/all-models"],
+    ["Sea-Dweller", "Deepsea", "136660", 44, S, ["D-blue", "Black"], "deepsea/all-models"],
+    ["Sea-Dweller", "Deepsea", "136668LB", 44, YG, ["Blue"], "deepsea/all-models"],
+    ["Sea-Dweller", "Deepsea Challenge", "126067", 50, TI, ["Black"], "deepsea/all-models"],
+
+    ["Yacht-Master", "Yacht-Master 37", "268621", 37, `${S} and rose gold`, ["Chocolate", "Black"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 37", "268622", 37, `${S} and platinum`, ["Slate"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 37", "268655", 37, RG, ["Black"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 40", "126621", 40, `${S} and rose gold`, ["Black", "Chocolate"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 40", "126622", 40, `${S} and platinum`, ["Slate", "Bright blue"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 40", "126655", 40, RG, ["Black"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 42", "226627", 42, TI, ["Black"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 42", "226658", 42, YG, ["Black"], "yacht-master/all-models"],
+    ["Yacht-Master", "Yacht-Master 42", "226659", 42, WG, ["Black"], "yacht-master/all-models"],
+
+    ["Sky-Dweller", "Sky-Dweller", "336933", 42, `${S} and yellow gold`, ["Champagne", "White", "Black"], "sky-dweller/all-models"],
+    ["Sky-Dweller", "Sky-Dweller", "336934", 42, `${S} and white gold`, ["Mint green", "Black", "Bright blue", "White"], "sky-dweller/all-models"],
+    ["Sky-Dweller", "Sky-Dweller", "336935", 42, RG, ["Slate", "Blue-green", "White", "Chocolate"], "sky-dweller/all-models"],
+    ["Sky-Dweller", "Sky-Dweller", "336938", 42, YG, ["White", "Bright green", "Champagne", "Black"], "sky-dweller/all-models"],
+    ["Sky-Dweller", "Sky-Dweller", "336235", 42, RG, ["White", "Slate", "Chocolate"], "sky-dweller/all-models"],
+    ["Sky-Dweller", "Sky-Dweller", "336238", 42, YG, ["Champagne", "White", "Black", "Bright green"], "sky-dweller/all-models"],
+    ["Sky-Dweller", "Sky-Dweller", "336239", 42, WG, ["Black", "White"], "sky-dweller/all-models"],
+
+    ["Land-Dweller", "Land-Dweller 36", "127234", 36, `${S} and white gold`, ["White"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 36", "127235", 36, RG, ["White"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 36", "127236", 36, PT, ["Ice blue"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 36", "127285TBR", 36, RG + D, ["White"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 36", "127286TBR", 36, PT + D, ["Ice blue"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 40", "127334", 40, `${S} and white gold`, ["White"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 40", "127335", 40, RG, ["White"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 40", "127336", 40, PT, ["Ice blue"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 40", "127385TBR", 40, RG + D, ["White"], "land-dweller/all-models"],
+    ["Land-Dweller", "Land-Dweller 40", "127386TBR", 40, PT + D, ["Ice blue"], "land-dweller/all-models"],
+
+    ["1908", "1908", "52506", 39, PT, ["Ice blue"], "1908/all-models"],
+    ["1908", "1908", "52508", 39, YG, ["White", "Black"], "1908/all-models"],
+    ["1908", "1908", "52509", 39, WG, ["Black", "White"], "1908/all-models"],
+
+    ["Oyster Perpetual", "Oyster Perpetual 41", "134300", 41, S, ["Silver", "Black", "Green", "Med blue", "Pistachio", "Lavender", "Beige", "Candy pink", "Multicoloured"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 41", "134303", 41, `${S} and yellow gold`, ["Slate"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 36", "126000", 36, S, ["Black", "Silver", "Green", "Med blue", "Turquoise blue", "Pistachio", "Lavender", "Beige", "Candy pink", "Multicoloured"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 36", "126003", 36, `${S} and yellow gold`, ["Slate"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 34", "124200", 34, S, ["Black", "Med blue", "Lavender", "Beige", "Candy pink"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 34", "124205", 34, RG, ["Black", "Blue stone"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 34", "124208", 34, YG, ["Black", "White"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 34", "124245RBR", 34, RG + D, ["White mother-of-pearl", "Brown stone"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 34", "124248RBR", 34, YG + D, ["Turquoise blue", "White mother-of-pearl"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 31", "277200", 31, S, ["Silver", "Black", "Green", "Med blue", "Lavender", "Candy pink"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 31", "277203", 31, `${S} and yellow gold`, ["Slate"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 28", "276200", 28, S, ["Silver", "Black", "Med blue", "Pistachio", "Lavender", "Beige", "Candy pink"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 28", "276205", 28, RG, ["Black", "White"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 28", "276208", 28, YG, ["Black", "Green stone"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 28", "276245RBR", 28, RG + D, ["Brown stone", "White mother-of-pearl"], "oyster-perpetual/all-models"],
+    ["Oyster Perpetual", "Oyster Perpetual 28", "276248RBR", 28, YG + D, ["Turquoise blue", "White mother-of-pearl"], "oyster-perpetual/all-models"],
+  ],
+};

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: P }): Promise<Metad
   if (!w) return {};
   return {
     title: `Sell or borrow against your ${fullName(w)}`,
-    description: `${fullName(w)}: ${[w.sizeMm ? `${w.sizeMm} mm` : null, w.material.toLowerCase(), `${w.dial.toLowerCase()} dial`, w.movement].filter(Boolean).join(", ")}. Sell it or register for a loan against it. ${SITE.area}.`,
+    description: `${fullName(w)}: ${[w.sizeMm ? `${w.sizeMm} mm` : null, w.material.toLowerCase(), `${w.dial.toLowerCase()} dial`, w.movement || null].filter(Boolean).join(", ")}. Sell it or register for a loan against it. ${SITE.area}.`,
     alternates: { canonical: w.url },
   };
 }
@@ -29,7 +29,7 @@ function faqs(w: Watch) {
   return [
     { q: `How do I sell my ${name}?`, a: `Send us the enquiry form on this page with the condition of your ${w.model} and whether you have the box and papers. We review it and contact you with an offer, which is confirmed once the watch has been inspected.` },
     { q: `Can I borrow against my ${w.brand} ${w.model} instead of selling it?`, a: SITE.loansMode === "waitlist" ? `We are preparing a loan service secured on watches such as the ${w.referenceDisplay}. Choose "Borrow against it" in the form to register your interest. This is not an offer of credit.` : `Yes. Choose "Borrow against it" in the form and we will explain how a loan secured on your watch would work before you commit to anything.` },
-    { q: `How do I check that my watch is reference ${w.referenceDisplay}?`, a: `The reference is printed on the warranty card or papers and is usually engraved on the case. This reference has a ${w.sizeMm ? `${w.sizeMm} mm ` : ""}${w.material.toLowerCase()} case, a ${w.dial.toLowerCase()} dial and uses ${w.movement}. If yours differs, tell us in the form.` },
+    { q: `How do I check that my watch is reference ${w.referenceDisplay}?`, a: `The reference is printed on the warranty card or papers and is usually engraved on the case. This reference has a ${w.sizeMm ? `${w.sizeMm} mm ` : ""}${w.material.toLowerCase()} case, a ${w.dial.toLowerCase()} dial${w.dials.length > 1 ? ` (other dials: ${w.dials.slice(1).join(", ").toLowerCase()})` : ""}${w.movement ? ` and uses ${w.movement}` : ""}. If yours differs, tell us in the form.` },
     { q: "What affects how much my watch is worth?", a: "Condition, service history, whether the original box and papers are present, the year, and current demand for the reference. Any figure we give before inspection is provisional." },
   ];
 }
@@ -54,7 +54,7 @@ export default async function WatchPage({ params }: { params: P }) {
   const specs: [string, string][] = [
     ["Brand", w.brand], ["Collection", w.family], ["Model", w.model], ["Reference", w.referenceDisplay],
     ...(w.sizeMm ? ([["Case size", `${w.sizeMm} mm`]] as [string, string][]) : []),
-    ["Case material", w.material], ["Dial", w.dial], ...(w.bezel ? ([["Bezel", w.bezel]] as [string, string][]) : []), ["Movement", w.movement],
+    ["Case material", w.material], [w.dials.length > 1 ? "Dial options" : "Dial", w.dials.join(", ")], ...(w.bezel ? ([["Bezel", w.bezel]] as [string, string][]) : []), ...(w.movement ? ([["Movement", w.movement]] as [string, string][]) : []),
   ];
   return (
     <div className="wrap">
@@ -72,6 +72,7 @@ export default async function WatchPage({ params }: { params: P }) {
         <div>
           <div className="detail-art"><WatchArt watch={w} size={230} /><small>Illustration for identification only, not a photograph of this model.</small></div>
           <table className="specs"><tbody>{specs.map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody></table>
+          {w.source && <p style={{ fontSize: ".82rem", color: "var(--muted)", marginTop: -8 }}>Model, size, material and dial options checked against <a href={w.source.url} rel="nofollow noopener">{w.source.name}</a> on {w.source.checked}.</p>}
           <section className="faq" style={{ padding: "10px 0 0" }}>
             <h2>Selling or borrowing against a {w.brand} {w.referenceDisplay}</h2>
             {qa.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}

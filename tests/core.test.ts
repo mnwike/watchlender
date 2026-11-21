@@ -104,3 +104,16 @@ describe("listings", () => {
     expect(validateLead({ ...base, intent: "buy", listingId: "t-1" }).ok).toBe(true);
   });
 });
+
+describe("manufacturer-sourced records", () => {
+  it("override seed rows, keep seed movement and carry a source", () => {
+    const sub = WATCHES.find((w) => w.referenceDisplay === "126610LN")!;
+    expect(sub.status).toBe("manufacturer-listed");
+    expect(sub.source?.url).toContain("rolex.com");
+    expect(sub.movement).toBe("Cal. 3235");
+  });
+  it("list dial options and stay unverified when the maker's page did not list them", () => {
+    expect(WATCHES.find((w) => w.referenceDisplay === "126500LN")!.dials).toEqual(["White", "Black"]);
+    expect(WATCHES.find((w) => w.referenceDisplay === "116610LN")!.status).toBe("unverified");
+  });
+});

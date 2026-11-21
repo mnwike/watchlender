@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { validateLead } from "@/lib/leads";
 
-type Intent = "sell" | "loan" | "list";
+type Intent = "sell" | "loan" | "list" | "value";
 
 export default function LeadForm({
   watchId,
@@ -35,7 +35,7 @@ export default function LeadForm({
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json", accept: "application/json" },
-        body: JSON.stringify({ ...check.lead, year: data.year, watch: watchLabel ?? check.lead.watchText, _subject: `${intent === "sell" ? "Sell" : intent === "list" ? "Listing" : "Loan"} enquiry: ${watchLabel ?? check.lead.watchText}` }),
+        body: JSON.stringify({ ...check.lead, year: data.year, watch: watchLabel ?? check.lead.watchText, _subject: `${intent === "sell" ? "Sell" : intent === "list" ? "Listing" : intent === "value" ? "Valuation" : "Loan"} enquiry: ${watchLabel ?? check.lead.watchText}` }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setState("done");
@@ -57,11 +57,12 @@ export default function LeadForm({
   const loanWaitlist = intent === "loan" && loansMode === "waitlist";
   return (
     <form className="lead-form" onSubmit={onSubmit} noValidate>
-      <div className="intent three" role="tablist" aria-label="What would you like to do?">
+      {defaultIntent !== "value" && <div className="intent three" role="tablist" aria-label="What would you like to do?">
         <button type="button" role="tab" aria-selected={intent === "sell"} className={intent === "sell" ? "on" : ""} onClick={() => setIntent("sell")}>Sell to us</button>
         <button type="button" role="tab" aria-selected={intent === "list"} className={intent === "list" ? "on" : ""} onClick={() => setIntent("list")}>List for sale</button>
         <button type="button" role="tab" aria-selected={intent === "loan"} className={intent === "loan" ? "on" : ""} onClick={() => setIntent("loan")}>Borrow</button>
-      </div>
+      </div>}
+      {intent === "value" && <p className="note">Tell us about your watch and we&apos;ll reply with an indicative figure. It is provisional until the watch has been inspected.</p>}
       {intent === "list" && (
         <>
           <p className="note">We review every listing before it appears on the site. We do not handle payment between buyers and sellers yet.</p>
@@ -93,7 +94,7 @@ export default function LeadForm({
       <label className="hp" aria-hidden="true">Leave this empty<input name="company" tabIndex={-1} autoComplete="off" /></label>
       <label className="consent"><input type="checkbox" name="consent" required /> <span>I agree to be contacted about this enquiry. See our <a href="/privacy">privacy notice</a>.</span></label>
       {errors.length > 0 && <ul className="errors" role="alert">{errors.map((e) => <li key={e}>{e}</li>)}</ul>}
-      <button className="btn primary" disabled={state === "sending"}>{state === "sending" ? "Sending…" : loanWaitlist ? "Register my interest" : intent === "sell" ? "Get my offer" : intent === "list" ? "Submit my listing" : "Start my enquiry"}</button>
+      <button className="btn primary" disabled={state === "sending"}>{state === "sending" ? "Sending…" : loanWaitlist ? "Register my interest" : intent === "sell" ? "Get my offer" : intent === "list" ? "Submit my listing" : intent === "value" ? "Request my valuation" : "Start my enquiry"}</button>
     </form>
   );
 }
