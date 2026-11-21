@@ -31,6 +31,7 @@ export const SEED: Record<string, SeedRow[]> = {
     ["Daytona", "Cosmograph Daytona", "126500LN", 40, "Steel", "White", "Cal. 4131", "Black"],
     ["Daytona", "Cosmograph Daytona", "116500LN", 40, "Steel", "White", "Cal. 4130", "Black"],
     ["Daytona", "Cosmograph Daytona", "116520", 40, "Steel", "Black", "Cal. 4130"],
+    ["Daytona", "Cosmograph Daytona", "116518LN", 40, "Yellow gold", "Champagne", "Cal. 4130", "Black"],
     ["Daytona", "Cosmograph Daytona Le Mans", "126529LN", 40, "White gold", "Black", "Cal. 4132", "Black"],
     ["Daytona", "Cosmograph Daytona Le Mans", "126528LN", 40, "Yellow gold", "Black", "Cal. 4132", "Black"],
     ["Daytona", "Cosmograph Daytona Rainbow", "116595RBOW", 40, "Rose gold", "Black", "Cal. 4130"],

@@ -14,7 +14,7 @@ export function PriceTable({ metal }: { metal: Metal }) {
     <div className="table-scroll">
       <table className="compare">
         <thead><tr><th>Purity</th><th>Hallmark</th><th>Per gram</th><th>Per troy ounce</th></tr></thead>
-        <tbody>{PURITIES[metal].map((p) => <tr key={p.mark} id={p.label.toLowerCase().replace(/\s+/g, "-")}><td>{metal === "gold" ? <Link href={`/gold-price-per-gram/${p.label}`}>{p.label}</Link> : p.label}</td><td>{p.mark}</td><td>{gbp(pricePerGram(perOz) * p.fineness)}</td><td>{gbp(perOz * p.fineness)}</td></tr>)}</tbody>
+        <tbody>{PURITIES[metal].map((p) => <tr key={p.mark} id={p.label.toLowerCase().replace(/\s+/g, "-")}><td>{metal === "gold" ? <Link href={`/gold-price-per-gram/${p.label}`}>{p.label}</Link> : p.label}</td><td>{(metal === "gold" || p.mark === "925") ? <Link href={`/hallmarks/${p.mark}-${metal}`}>{p.mark}</Link> : p.mark}</td><td>{gbp(pricePerGram(perOz) * p.fineness)}</td><td>{gbp(perOz * p.fineness)}</td></tr>)}</tbody>
       </table>
     </div>
   );
@@ -74,7 +74,7 @@ export function PricePerGramPage({ metal }: { metal: Metal }) {
           <MetalCalculator {...calcProps} initial={metal} />
           <h2>What to do with it</h2>
           <MetalLinks />
-          <p>Other metals: {(["gold", "silver", "platinum"] as Metal[]).filter((m) => m !== metal).map((m, i) => <span key={m}>{i > 0 ? " · " : ""}<Link href={`/${m}-price-per-gram`}>{METAL_NAME[m]} price per gram</Link></span>)} · <Link href="/guides/uk-gold-hallmarks">How to read UK hallmarks</Link></p>
+          <p>Other metals: {(["gold", "silver", "platinum"] as Metal[]).filter((m) => m !== metal).map((m, i) => <span key={m}>{i > 0 ? " · " : ""}<Link href={`/${m}-price-per-gram`}>{METAL_NAME[m]} price per gram</Link></span>)} · <Link href={`/${metal === "platinum" ? "gold" : metal}-price-uk`}>{metal === "platinum" ? "Gold" : METAL_NAME[metal]} price UK</Link> · <Link href="/guides/uk-gold-hallmarks">How to read UK hallmarks</Link></p>
           <section className="faq" style={{ padding: 0 }}>
             <h2>{name} price questions</h2>
             {faqs.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}

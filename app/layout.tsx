@@ -61,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/watch-loans">Loans against watches</Link>
                 <Link href="/pawn-my-watch">Pawn my watch</Link>
                 <Link href="/sell-gold">Sell gold</Link>
+                <Link href="/gold-price-uk">Gold price UK</Link>
                 <Link href="/gold-price-calculator">Gold calculator</Link>
                 <Link href="/gold-price-per-gram">Gold price per gram</Link>
                 <Link href="/scrap-gold-price">Scrap gold price</Link>

@@ -104,6 +104,12 @@ export const NICKNAMES: Nickname[] = [
     refs: ["116595RBOW", "116598RBOW", "116599RBOW"], related: ["le-mans", "panda"],
   },
   {
+    slug: "pikachu", name: "Pikachu", model: "Cosmograph Daytona",
+    summary: "The Rolex Pikachu is a yellow gold Cosmograph Daytona with a champagne dial, black sub-dials and a black ceramic bezel, on the black Oysterflex strap. The yellow and black colours gave it the name. Most collectors mean reference 116518LN, introduced in 2017, and its 2023 successor 126518LN.",
+    identify: ["Yellow gold case with a black Cerachrom bezel.", "Champagne dial with black sub-dials. The same references were made with other dials, which are not a Pikachu.", "Black Oysterflex strap rather than a metal bracelet.", "Some dealers also use the name for the all-gold bracelet versions, 116508 and 126508, with the same dial, so check the reference rather than relying on the nickname."],
+    refs: ["116518LN", "126518LN"], otherRefs: "The bracelet versions 116508 and 126508 with a champagne and black dial are sometimes given the same nickname.", related: ["panda", "le-mans", "rainbow"],
+  },
+  {
     slug: "wimbledon", name: "Wimbledon", model: "Datejust",
     summary: "The Rolex Wimbledon is not a single reference but a dial: slate grey with Roman numerals outlined in green. It is most often seen on the Datejust 41, in steel, steel and white gold, and two-tone versions.",
     identify: ["Slate grey dial with black Roman numerals edged in green.", "Found on several Datejust references, so the reference alone does not confirm it.", "Check the dial against the papers if you are unsure which version you have."],
