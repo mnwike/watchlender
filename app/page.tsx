@@ -84,7 +84,7 @@ export default function Home() {
 
       <section className="alt">
         <div className="wrap">
-          <div className="section-head"><h2>Popular watches</h2><Link href="/watches">Search the catalogue</Link></div>
+          <div className="section-head"><h2>Popular watches</h2><div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}><Link href="/watch-photo-gallery">Watch photo gallery</Link><Link href="/watches">Search the catalogue</Link></div></div>
           <div className="grid">{featured.map((w) => <WatchCard key={w.id} watch={w} />)}</div>
         </div>
       </section>
