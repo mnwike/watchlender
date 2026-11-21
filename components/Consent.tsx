@@ -14,9 +14,10 @@ function loadTag(id: string) {
   // eslint-disable-next-line prefer-rest-params
   function gtag(..._args: unknown[]) { w.dataLayer!.push(arguments); }
   gtag("js", new Date());
+  gtag("config", id, { anonymize_ip: true });
   const s = document.createElement("script");
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(id)}`;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
   document.head.appendChild(s);
 }
 

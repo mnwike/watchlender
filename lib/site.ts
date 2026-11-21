@@ -15,7 +15,7 @@ export const SITE = {
   fcaStatement: process.env.NEXT_PUBLIC_FCA_STATEMENT ?? "",
   // Where enquiry forms are sent (a form service or your own endpoint that accepts JSON).
   // Empty = forms show "not switched on yet" instead of pretending to send.
-  // Google tag for the WatchLender Analytics property. Loaded only after cookie consent.
-  googleTagId: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "GTM-K6S79Z52",
+  // GA4 measurement ID for the "WatchLender website" stream. Loaded only after cookie consent.
+  googleTagId: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "G-Y3PPV27CSF",
   leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT ?? "",
 };
