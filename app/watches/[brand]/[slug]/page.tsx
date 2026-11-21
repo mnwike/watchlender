@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { WATCHES, fullName, getWatch, related, type Watch } from "@/lib/catalogue";
 import { SITE } from "@/lib/site";
-import WatchArt from "@/components/WatchArt";
+import WatchPhoto, { WatchPhotoCredit } from "@/components/WatchPhoto";
 import WatchCard from "@/components/WatchCard";
 import LeadForm from "@/components/LeadForm";
 import { listingsForWatch } from "@/lib/listings";
@@ -74,7 +74,7 @@ export default async function WatchPage({ params }: { params: P }) {
       </div>
       <div className="detail">
         <div>
-          <div className="detail-art"><WatchArt watch={w} size={230} /><small>Illustration for identification only, not a photograph of this model.</small></div>
+          <div className="detail-art"><WatchPhoto watch={w} size={230} /><WatchPhotoCredit watch={w} /></div>
           <table className="specs"><tbody>{specs.map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody></table>
           {w.source && <p style={{ fontSize: ".82rem", color: "var(--muted)", marginTop: -8 }}>Model, size, material and dial options checked against <a href={w.source.url} rel="nofollow noopener">{w.source.name}</a> on {w.source.checked}.</p>}
           <section className="faq" style={{ padding: "10px 0 0" }}>
