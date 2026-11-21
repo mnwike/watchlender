@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FAMILIES, getFamily } from "@/lib/catalogue";
-import { NICKNAMES } from "@/data/nicknames";
+import { NICKNAMES, nickBrand, nickUrl } from "@/data/nicknames";
 import { SITE } from "@/lib/site";
 import LeadForm from "@/components/LeadForm";
 import WatchCard from "@/components/WatchCard";
@@ -33,7 +33,7 @@ export default async function SellFamily({ params }: { params: P }) {
   const refs = f.watches.map((w) => w.referenceDisplay);
   const sizes = [...new Set(f.watches.map((w) => w.sizeMm).filter((x): x is number => x != null))].sort((a, b) => a - b);
   const materials = [...new Set(f.watches.map((w) => w.material))];
-  const nicks = f.brand.slug === "rolex" ? NICKNAMES.filter((n) => n.refs.some((r) => refs.includes(r))) : [];
+  const nicks = NICKNAMES.filter((n) => nickBrand(n) === f.brand.name && n.refs.some((r) => refs.includes(r)));
   const faqs = [
     { q: `How do I sell my ${name}?`, a: `Tell us the reference, condition and whether you have the box and papers using the form on this page. We review the details and come back to you with an offer, which is confirmed once the watch has been inspected.` },
     { q: `Which ${name} references do you cover?`, a: `Our catalogue currently lists ${refs.length} ${name} ${refs.length === 1 ? "reference" : "references"}: ${refs.slice(0, 12).join(", ")}${refs.length > 12 ? " and others" : ""}. If yours is not listed, describe it in the form.` },
@@ -55,7 +55,7 @@ export default async function SellFamily({ params }: { params: P }) {
         <div className="prose" style={{ maxWidth: "none" }}>
           <h2>Your three options</h2>
           <ThreeWaysTable />
-          {nicks.length > 0 && <p>Know yours by a nickname? {nicks.map((n, i) => <span key={n.slug}>{i > 0 ? " · " : ""}<Link href={`/rolex/${n.slug}`}>Rolex {n.name}</Link></span>)}</p>}
+          {nicks.length > 0 && <p>Know yours by a nickname? {nicks.map((n, i) => <span key={n.slug}>{i > 0 ? " · " : ""}<Link href={nickUrl(n)}>{nickBrand(n)} {n.name}</Link></span>)}</p>}
           <section className="faq" style={{ padding: 0 }}>
             <h2>Selling a {name}: common questions</h2>
             {faqs.map((x) => <details key={x.q}><summary>{x.q}</summary><p>{x.a}</p></details>)}

@@ -5,6 +5,8 @@ export interface Guide {
   description: string;
   intro: string;
   sections: { h: string; p?: string[]; list?: string[] }[];
+  sources?: { name: string; url: string }[];
+  topic?: "gold";
 }
 
 export const GUIDES: Guide[] = [
@@ -121,6 +123,65 @@ export const GUIDES: Guide[] = [
       { h: "Helium escape valve", p: ["The Sea-Dweller and Deepsea have a helium escape valve, a small circular valve set into the left side of the case, designed for saturation diving. The Submariner does not have one. It is the quickest way to tell the two apart."] },
       { h: "References to look for", list: ["Submariner: 124060 (no date) and 126610LN (date) are the current steel references.", "Sea-Dweller: 126600 in steel and 126603 in steel and yellow gold.", "Deepsea: 136660, and 136668LB in yellow gold."] },
       { h: "Which is worth more?", p: ["It depends on the reference, condition and demand at the time, not simply on which model is higher in the range. Send us the details of yours for a current indicative figure."] },
+    ],
+  },
+  {
+    slug: "uk-gold-hallmarks",
+    title: "UK gold hallmarks explained: 375, 585, 750, 916 and what they mean",
+    description: "How to read a UK hallmark on gold, silver and platinum: the purity numbers, the assay office symbols and what to do if there is no hallmark.",
+    topic: "gold",
+    intro: "A hallmark is the set of small stamps on a piece of precious metal that confirms what it is made of. In the UK it is applied by an independent assay office after testing, so it is the most reliable guide to purity you will find on the item itself.",
+    sections: [
+      { h: "The purity numbers", p: ["The number is the purity in parts per thousand."], list: ["Gold: 375 is 9 carat, 585 is 14 carat, 750 is 18 carat, 916 is 22 carat, 990 and 999 are 24 carat.", "Silver: 925 is sterling, 958 is Britannia, 999 is fine silver. 800 is seen on some continental silver.", "Platinum: 850, 900, 950 and 999. Most platinum jewellery is 950."] },
+      { h: "The other marks", list: ["Sponsor's mark: the initials of the maker or the company that submitted the item.", "Assay office mark: a leopard's head for London, an anchor for Birmingham, a rose for Sheffield and a castle for Edinburgh.", "Date letter: a letter showing the year of hallmarking. It has been optional since 1999.", "Traditional symbols, also optional: a crown for gold, a lion for sterling silver and an orb for platinum."] },
+      { h: "When a hallmark is required", p: ["In the UK an item cannot be described and sold as gold, silver or platinum unless it is hallmarked, apart from very light items below the exemption weights: 1 gram for gold, 7.78 grams for silver and 0.5 grams for platinum."] },
+      { h: "If there is no hallmark", p: ["Older, very light or foreign-made pieces may have no UK hallmark, and stamps such as 9K or 18K on their own are not hallmarks. The item may still be precious metal, but it will need to be tested before anyone can value it."] },
+      { h: "Using the hallmark to value your item", p: ["Once you know the purity, weigh the item and multiply by the price per gram for that purity. Our gold calculator does this for gold, silver and platinum."] },
+    ],
+  },
+  {
+    slug: "is-it-a-good-time-to-sell-gold",
+    title: "Is now a good time to sell gold?",
+    description: "How to think about the timing of selling gold: what moves the price, what you can and cannot predict, and how to get a fair offer whenever you sell.",
+    topic: "gold",
+    intro: "Nobody can tell you where the gold price will go next, and anyone who claims to is guessing. What you can do is understand what the price is today, compare it with the past, and make sure you are paid a fair share of it.",
+    sections: [
+      { h: "What moves the gold price", p: ["Gold is priced in US dollars on world markets. The price in pounds therefore depends on two things: the dollar gold price and the exchange rate. It tends to rise when investors are worried about inflation, currencies or financial markets, and to fall back when those worries ease."] },
+      { h: "Why timing matters less than you think", p: ["For most people selling a few items, the difference between a good and a poor buyer is larger than the difference a few weeks of price movement would make. Two buyers on the same day can offer noticeably different amounts for the same gold."] },
+      { h: "How to judge an offer", list: ["Work out the metal value yourself from the weight, the carat and the price per gram.", "Ask what proportion of that value the buyer is offering.", "Check whether there are fees, and how and when you are paid.", "Get more than one offer if you can."] },
+      { h: "Reasons to sell that have nothing to do with the price", p: ["Broken, unworn or inherited pieces earn nothing in a drawer. If you have a use for the money and no attachment to the item, a fair offer today is often better than waiting for a higher price that may not come."] },
+      { h: "If you would rather keep it", p: ["Borrowing against gold is an alternative if you need funds for a short time and want the item back. It has a cost, so compare it with selling."] },
+    ],
+  },
+  {
+    slug: "watch-insurance",
+    title: "Watch insurance: how to insure a Rolex or other luxury watch",
+    description: "How to insure a luxury watch in the UK: home contents limits, specialist policies, valuations and what to check in the small print.",
+    intro: "A valuable watch is easy to lose, damage or have stolen, and it is often less well insured than its owner assumes. This guide covers the main ways to insure one and the questions to ask. It is general information, not advice on any particular policy.",
+    sections: [
+      { h: "Check your home contents policy first", p: ["Most contents policies have a single-item limit, often far below the value of a luxury watch. Items above the limit must usually be listed individually, and cover away from home is often an optional extra. Read the schedule before assuming you are covered."] },
+      { h: "Specialist watch and jewellery cover", p: ["Specialist policies are designed for high-value items worn outside the home. They commonly offer worldwide cover and agreed-value settlement, where the payout for a total loss is fixed in advance."] },
+      { h: "What insurers ask for", list: ["Proof of ownership: the receipt, warranty card or papers.", "A recent valuation for items above a certain value.", "Photographs and the reference and serial numbers.", "Details of where the watch is kept and whether there is a safe."] },
+      { h: "Things to check in the policy", list: ["Is it agreed value or will the insurer decide the value at the time of a claim?", "Is the watch covered when worn, when travelling abroad, and in a hotel or car?", "Is accidental damage and loss covered, or only theft?", "Will the insurer replace the watch or pay cash, and through whom?", "What security conditions apply, such as a safe when the watch is not worn?"] },
+      { h: "Keep the value up to date", p: ["Pre-owned prices for many watches have moved a great deal in recent years, in both directions. A valuation that is several years old can leave you under-insured or paying for cover you do not need."] },
+    ],
+  },
+  {
+    slug: "most-expensive-rolex",
+    title: "The most expensive Rolex watches ever sold",
+    description: "The record auction prices for Rolex watches, why those watches were worth so much, and what it does and does not mean for your own Rolex.",
+    intro: "The highest prices ever paid for Rolex watches have all been at auction, and almost all for vintage Daytonas with exceptional stories. They are a world away from the price of a typical pre-owned Rolex, but they show what collectors value.",
+    sections: [
+      { h: "Paul Newman's own Daytona", p: ["The record belongs to the Cosmograph Daytona reference 6239 that the actor Paul Newman wore himself. It was sold by Phillips in New York in October 2017 for about $17.8 million including the buyer's premium, which at the time was the highest price ever paid at auction for any wristwatch."] },
+      { h: "The Bao Dai", p: ["Before that sale, the Rolex record was held by a reference 6062 made for Bao Dai, the last emperor of Vietnam. Phillips sold it in May 2017 for just over $5 million."] },
+      { h: "The Unicorn and The King", p: ["A white gold Daytona reference 6265, known as the Unicorn, made about $5.9 million at Phillips in 2018. More recently Sotheby's reported selling a gem-set Daytona reference 6270, called The King, for about $5.2 million in October 2025."] },
+      { h: "What made them so valuable", list: ["Provenance: a famous owner and a documented history.", "Rarity: a unique metal, dial or one of a handful made.", "Originality: untouched cases and original dials.", "A model collectors already prized, above all the vintage Daytona."] },
+      { h: "What it means for your Rolex", p: ["Very little, directly. These are one-off pieces. The same things still drive ordinary prices on a smaller scale, though: the exact reference, originality, condition and paperwork. If you want to know what yours is worth today, ask for a valuation."] },
+    ],
+    sources: [
+      { name: "Bloomberg, 26 October 2017", url: "https://www.bloomberg.com/news/articles/2017-10-26/paul-newman-s-daytona-rolex-sells-for-record-17-8-million" },
+      { name: "South China Morning Post", url: "https://scmp.com/magazines/style/watches-jewellery/article/2117240/paul-newmans-rolex-daytona-worlds-most-expensive" },
+      { name: "Sotheby's: the most expensive Rolex watches", url: "https://www.sothebys.com/en/articles/the-5-most-expensive-rolex-watches" },
     ],
   },
 ];

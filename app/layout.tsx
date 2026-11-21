@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/list-my-watch">List</Link>
               <Link href="/watch-loans">Borrow</Link>
               <Link href="/watch-valuation">Valuation</Link>
+              <Link href="/sell-gold">Gold</Link>
               <Link href="/for-sale">For sale</Link>
               <Link href="/guides">Guides</Link>
             </nav>
@@ -52,6 +53,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/for-sale">Watches for sale</Link>
                 <Link href="/watch-loans">Loans against watches</Link>
                 <Link href="/pawn-my-watch">Pawn my watch</Link>
+                <Link href="/sell-gold">Sell gold</Link>
+                <Link href="/gold-price-calculator">Gold calculator</Link>
+                <Link href="/gold-price-per-gram">Gold price per gram</Link>
+                <Link href="/sell-jewellery">Sell jewellery</Link>
+                <Link href="/gold-loans">Gold loans</Link>
                 <Link href="/rolex-nicknames">Rolex nicknames</Link>
                 <Link href="/watch-valuation">Watch valuation</Link>
                 <Link href="/sell-my-watch-london">Sell my watch in London</Link>

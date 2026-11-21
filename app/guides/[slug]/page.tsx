@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { GUIDES, getGuide } from "@/data/guides";
 import { SITE } from "@/lib/site";
 import { ThreeWaysLinks } from "@/components/ThreeWays";
+import { MetalLinks } from "@/components/MetalPages";
 
 type P = Promise<{ slug: string }>;
 export const dynamicParams = false;
@@ -31,10 +32,10 @@ export default async function GuidePage({ params }: { params: P }) {
             {s.list && <ul>{s.list.map((t) => <li key={t}>{t}</li>)}</ul>}
           </section>
         ))}
+        {g.sources && <p style={{ fontSize: ".85rem", color: "var(--muted)" }}>Sources: {g.sources.map((x, i) => <span key={x.url}>{i > 0 ? " · " : ""}<a href={x.url} rel="nofollow noopener">{x.name}</a></span>)}</p>}
         <p className="note" style={{ marginTop: 24 }}>This guide is general information, not financial or legal advice.</p>
       </article>
-      <h2 style={{ marginTop: 24 }}>Sell now, list or borrow, in one place</h2>
-      <ThreeWaysLinks />
+      {g.topic === "gold" ? (<><h2 style={{ marginTop: 24 }}>Gold, silver and platinum</h2><MetalLinks /></>) : (<><h2 style={{ marginTop: 24 }}>Sell now, list or borrow, in one place</h2><ThreeWaysLinks /></>)}
       <p>Other guides: {GUIDES.filter((x) => x.slug !== g.slug).map((x, i) => <span key={x.slug}>{i > 0 ? " · " : ""}<Link href={`/guides/${x.slug}`}>{x.title}</Link></span>)}</p>
     </div>
   );

@@ -1,6 +1,7 @@
 // Collector nicknames for Rolex models. These are informal names, not Rolex's own.
 // refs: reference numbers in our catalogue (shown as links). otherRefs: mentioned in text only.
 export interface Nickname {
+  brand?: "Rolex" | "Omega" | "Tudor"; // default Rolex
   slug: string;
   name: string; // "Batman"
   model: string;
@@ -120,6 +121,39 @@ export const NICKNAMES: Nickname[] = [
     identify: ["Day of the week spelled out in full at 12 o'clock, with the date at 3.", "Precious metal only: yellow, white or Everose gold, or platinum.", "The President bracelet with a concealed clasp."],
     refs: ["228238", "228235", "228239", "228206", "128238"], related: ["wimbledon"],
   },
+  {
+    slug: "zombie", name: "Zombie", model: "GMT-Master II",
+    summary: "The Rolex Zombie is the two-tone GMT-Master II reference 126713GRNR, in steel and yellow gold with a grey and black ceramic bezel. Some collectors also call it the Guinness.",
+    identify: ["Grey and black Cerachrom bezel.", "Steel and yellow gold case and bracelet.", "Reference 126713GRNR. The all-steel grey and black version is the Bruce Wayne (126710GRNR)."],
+    refs: ["126713GRNR"], otherRefs: "The solid yellow gold version with the same bezel is reference 126718GRNR.", related: ["bruce-wayne", "root-beer"],
+  },
+  {
+    slug: "tiffany", name: "Tiffany", model: "Oyster Perpetual",
+    summary: "Tiffany is the nickname for the Rolex Oyster Perpetual with a turquoise blue dial, a colour close to the jeweller's signature blue. It is not connected with Tiffany & Co. The dial appeared in 2020 and is currently offered on the Oyster Perpetual 36, reference 126000.",
+    identify: ["Bright turquoise blue lacquer dial.", "Steel Oyster Perpetual with a smooth bezel and no date.", "Reference 126000 in 36 mm. The 41 mm reference 124300 was also made with this dial."],
+    refs: ["126000", "124300"], related: ["wimbledon", "president"],
+  },
+  {
+    brand: "Tudor", slug: "pepsi", name: "Pepsi", model: "Black Bay GMT",
+    summary: "The Tudor Pepsi is the Black Bay GMT with a burgundy and blue bezel, reference M79830RB, introduced in 2018. It takes its nickname from the red and blue Rolex GMT-Master it resembles.",
+    identify: ["Matt burgundy and blue aluminium 24-hour bezel.", "Black dial with a red snowflake GMT hand.", "41 mm steel case, reference M79830RB."],
+    refs: ["M79830RB-0001"],
+  },
+  {
+    brand: "Omega", slug: "snoopy", name: "Snoopy", model: "Speedmaster",
+    summary: "The Omega Snoopy is the Speedmaster Silver Snoopy Award, made to mark the award NASA astronauts gave Omega in 1970 after Apollo 13. The current version is the 50th anniversary model, reference 310.32.42.50.02.001, introduced in 2020. Earlier editions were released in 2003 and 2015.",
+    identify: ["Silver dial with blue sub-dials and Snoopy in a spacesuit at 9 o'clock.", "Blue ceramic bezel with a white tachymeter scale.", "An animated case back showing Snoopy in a spacecraft passing the Moon.", "42 mm steel case, reference 310.32.42.50.02.001."],
+    refs: ["310.32.42.50.02.001"], otherRefs: "The 2015 edition is reference 311.32.42.30.04.003 and the 2003 edition is 3578.51.00.",
+  },
+  {
+    brand: "Omega", slug: "moonwatch", name: "Moonwatch", model: "Speedmaster Professional",
+    summary: "The Omega Moonwatch is the Speedmaster Professional, the watch worn on the Moon during the Apollo missions. Unlike most nicknames it is one Omega uses itself. The current steel references use the calibre 3861 and come with either a hesalite or a sapphire crystal.",
+    identify: ["42 mm steel case with a black dial, three sub-dials and a black tachymeter bezel.", "Hand-wound movement: calibre 3861 on current models, 1861 before that.", "310.30.42.50.01.001 has a hesalite crystal and a solid case back.", "310.30.42.50.01.002 has a sapphire crystal and a display case back."],
+    refs: ["310.30.42.50.01.001", "310.30.42.50.01.002", "311.30.42.30.01.005", "311.30.42.30.01.006"],
+  },
 ];
 
-export const getNickname = (slug: string) => NICKNAMES.find((n) => n.slug === slug);
+export const nickBrand = (n: Nickname) => n.brand ?? "Rolex";
+export const nickUrl = (n: Nickname) => `/${nickBrand(n).toLowerCase()}/${n.slug}`;
+export const nicknamesFor = (brand: string) => NICKNAMES.filter((n) => nickBrand(n) === brand);
+export const getNickname = (slug: string, brand = "Rolex") => NICKNAMES.find((n) => n.slug === slug && nickBrand(n) === brand);

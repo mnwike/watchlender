@@ -79,6 +79,7 @@ export const SEED: Record<string, SeedRow[]> = {
     ["Speedmaster", "Speedmaster Moonwatch Professional", "310.30.42.50.01.002", 42, "Steel", "Black", "Cal. 3861", "Black"],
     ["Speedmaster", "Speedmaster Moonwatch Professional", "311.30.42.30.01.005", 42, "Steel", "Black", "Cal. 1861", "Black"],
     ["Speedmaster", "Speedmaster Moonwatch Professional", "311.30.42.30.01.006", 42, "Steel", "Black", "Cal. 1863", "Black"],
+    ["Speedmaster", "Speedmaster Silver Snoopy Award", "310.32.42.50.02.001", 42, "Steel", "Silver", "Cal. 3861", "Blue"],
     ["Speedmaster", "Speedmaster Dark Side of the Moon", "311.92.44.51.01.003", 44.25, "Ceramic", "Black", "Cal. 9300", "Black"],
     ["Speedmaster", "Speedmaster '57", "332.10.41.51.01.001", 40.5, "Steel", "Black", "Cal. 9906"],
     ["Speedmaster", "Speedmaster Reduced", "3510.50.00", 39, "Steel", "Black", "Cal. 3220", "Black"],

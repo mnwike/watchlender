@@ -118,13 +118,13 @@ describe("manufacturer-sourced records", () => {
   });
 });
 
-import { NICKNAMES } from "@/data/nicknames";
+import { NICKNAMES, nickBrand } from "@/data/nicknames";
 describe("nicknames", () => {
   it("every listed reference exists in the Rolex catalogue", () => {
-    for (const n of NICKNAMES) for (const r of n.refs) expect(WATCHES.some((w) => w.brandSlug === "rolex" && w.referenceDisplay === r), `${n.slug} ${r}`).toBe(true);
+    for (const n of NICKNAMES) for (const r of n.refs) expect(WATCHES.some((w) => w.brand === nickBrand(n) && w.referenceDisplay === r), `${n.slug} ${r}`).toBe(true);
   });
   it("related nicknames resolve", () => {
-    for (const n of NICKNAMES) for (const s of n.related ?? []) expect(NICKNAMES.some((x) => x.slug === s), `${n.slug} -> ${s}`).toBe(true);
+    for (const n of NICKNAMES) for (const s of n.related ?? []) expect(NICKNAMES.some((x) => x.slug === s && nickBrand(x) === nickBrand(n)), `${n.slug} -> ${s}`).toBe(true);
   });
 });
 
@@ -133,5 +133,19 @@ describe("general enquiry (pop-up)", () => {
     expect(validateLead({ intent: "general", name: "Sam Tester", email: "sam@example.com", consent: true }).ok).toBe(true);
     expect(validateLead({ intent: "general", name: "Sam Tester", email: "sam@example.com", consent: false }).ok).toBe(false);
     expect(validateLead({ intent: "general", name: "", email: "sam@example.com", consent: true }).ok).toBe(false);
+  });
+});
+
+import { PURITIES, TROY_OUNCE_G, meltValue, pricePerGram } from "@/lib/metals";
+describe("precious metal maths", () => {
+  it("converts a troy-ounce price to grams", () => expect(pricePerGram(3110.34768)).toBeCloseTo(100, 6));
+  it("values metal by weight x purity x price", () => {
+    expect(meltValue(10, 0.375, 3110.34768)).toBeCloseTo(375, 4); // 10 g of 9ct at 100/g
+    expect(meltValue(TROY_OUNCE_G, 0.999, 2000)).toBeCloseTo(1998, 4);
+    expect(meltValue(0, 0.75, 2000)).toBe(0);
+  });
+  it("uses the standard UK finenesses", () => {
+    expect(PURITIES.gold.map((p) => p.mark)).toEqual(["375", "585", "750", "916", "999"]);
+    expect(PURITIES.silver[0].fineness).toBe(0.925);
   });
 });

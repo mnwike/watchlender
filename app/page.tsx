@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 import WatchCard, { SearchBar } from "@/components/WatchCard";
 import { ThreeWaysTable } from "@/components/ThreeWays";
 import { GUIDES } from "@/data/guides";
-import { NICKNAMES } from "@/data/nicknames";
+import { NICKNAMES, nickBrand, nickUrl } from "@/data/nicknames";
 
 const FEATURED = ["126610LN", "126710BLRO", "126500LN", "5711/1A-010", "15500ST.OO.1220ST.01", "310.30.42.50.01.001", "WSSA0018", "M79030N-0001"];
 
@@ -89,11 +89,23 @@ export default function Home() {
       <section style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="section-head"><h2>Know it by its nickname?</h2><Link href="/rolex-nicknames">All Rolex nicknames</Link></div>
-          <div className="filters">{NICKNAMES.map((n) => <Link key={n.slug} className="chip" href={`/rolex/${n.slug}`}>Rolex {n.name}</Link>)}</div>
+          <div className="filters">{NICKNAMES.map((n) => <Link key={nickUrl(n)} className="chip" href={nickUrl(n)}>{nickBrand(n)} {n.name}</Link>)}</div>
         </div>
       </section>
 
       <section className="alt">
+        <div className="wrap">
+          <div className="section-head"><h2>Gold, silver and jewellery</h2><Link href="/gold-price-calculator">Gold calculator</Link></div>
+          <p style={{ maxWidth: "46em", color: "var(--muted)", marginTop: 0 }}>Not just watches. See what your gold, silver or platinum is worth by weight, then sell it or borrow against it.</p>
+          <div className="three-up">
+            <Link href="/sell-gold"><strong>Sell gold</strong><span>Scrap gold, jewellery and coins</span></Link>
+            <Link href="/gold-price-per-gram"><strong>Gold price per gram</strong><span>9ct, 18ct, 22ct and 24ct</span></Link>
+            <Link href="/sell-jewellery"><strong>Sell jewellery</strong><span>Diamond and engagement rings</span></Link>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <div className="wrap">
           <div className="section-head"><h2>Guides for watch owners</h2><Link href="/guides">All guides</Link></div>
           <div className="guide-list">{GUIDES.slice(0, 3).map((g) => <Link key={g.slug} href={`/guides/${g.slug}`}><h3>{g.title}</h3><p>{g.description}</p></Link>)}</div>

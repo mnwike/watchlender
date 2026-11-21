@@ -10,12 +10,18 @@ export default function LeadForm({
   defaultIntent = "sell",
   loansMode,
   endpoint,
+  itemLabel = "Which watch do you have?",
+  itemPlaceholder = "Brand, model and reference if you know it",
+  noList = false,
 }: {
   watchId?: string;
   watchLabel?: string;
   defaultIntent?: Intent;
   loansMode: "live" | "waitlist";
   endpoint: string;
+  itemLabel?: string;
+  itemPlaceholder?: string;
+  noList?: boolean;
 }) {
   const [intent, setIntent] = useState<Intent>(defaultIntent);
   const [state, setState] = useState<"idle" | "sending" | "done">("idle");
@@ -35,7 +41,7 @@ export default function LeadForm({
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json", accept: "application/json" },
-        body: JSON.stringify({ ...check.lead, year: data.year, watch: watchLabel ?? check.lead.watchText, _subject: `${intent === "sell" ? "Sell" : intent === "list" ? "Listing" : intent === "value" ? "Valuation" : "Loan"} enquiry: ${watchLabel ?? check.lead.watchText}` }),
+        body: JSON.stringify({ ...check.lead, year: data.year, weight: data.weight, watch: watchLabel ?? check.lead.watchText, _subject: `${intent === "sell" ? "Sell" : intent === "list" ? "Listing" : intent === "value" ? "Valuation" : "Loan"} enquiry: ${watchLabel ?? check.lead.watchText}` }),
       });
       if (!res.ok) throw new Error(String(res.status));
       try { sessionStorage.setItem("wl_lead_sent", "1"); } catch { /* storage unavailable */ }
@@ -58,12 +64,12 @@ export default function LeadForm({
   const loanWaitlist = intent === "loan" && loansMode === "waitlist";
   return (
     <form className="lead-form" onSubmit={onSubmit} noValidate>
-      {defaultIntent !== "value" && <div className="intent three" role="tablist" aria-label="What would you like to do?">
+      {defaultIntent !== "value" && <div className={noList ? "intent" : "intent three"} role="tablist" aria-label="What would you like to do?">
         <button type="button" role="tab" aria-selected={intent === "sell"} className={intent === "sell" ? "on" : ""} onClick={() => setIntent("sell")}>Sell to us</button>
-        <button type="button" role="tab" aria-selected={intent === "list"} className={intent === "list" ? "on" : ""} onClick={() => setIntent("list")}>List for sale</button>
+        {!noList && <button type="button" role="tab" aria-selected={intent === "list"} className={intent === "list" ? "on" : ""} onClick={() => setIntent("list")}>List for sale</button>}
         <button type="button" role="tab" aria-selected={intent === "loan"} className={intent === "loan" ? "on" : ""} onClick={() => setIntent("loan")}>Borrow</button>
       </div>}
-      {intent === "value" && <p className="note">Tell us about your watch and we&apos;ll reply with an indicative figure. It is provisional until the watch has been inspected.</p>}
+      {intent === "value" && <p className="note">Tell us {noList ? "what you have" : "about your watch"} and we&apos;ll reply with an indicative figure. It is provisional until the watch has been inspected.</p>}
       {intent === "list" && (
         <>
           <p className="note">We review every listing before it appears on the site. We do not handle payment between buyers and sellers yet.</p>
@@ -79,12 +85,16 @@ export default function LeadForm({
       {watchLabel ? (
         <p className="watch-line"><span>Your watch</span><strong>{watchLabel}</strong></p>
       ) : (
-        <label>Which watch do you have?<input name="watchText" required placeholder="Brand, model and reference if you know it" /></label>
+        <label>{itemLabel}<input name="watchText" required placeholder={itemPlaceholder} /></label>
       )}
-      <div className="row">
-        <label>Condition<select name="condition" defaultValue=""><option value="" disabled>Select</option><option>Unworn</option><option>Excellent</option><option>Good</option><option>Worn</option><option>Needs repair</option></select></label>
-        <label>Box and papers<select name="boxPapers" defaultValue=""><option value="" disabled>Select</option><option>Box and papers</option><option>Papers only</option><option>Box only</option><option>Neither</option></select></label>
-      </div>
+      {noList ? (
+        <label>Approximate weight <em>(optional)</em><input name="weight" placeholder="e.g. 12 g" /></label>
+      ) : (
+        <div className="row">
+          <label>Condition<select name="condition" defaultValue=""><option value="" disabled>Select</option><option>Unworn</option><option>Excellent</option><option>Good</option><option>Worn</option><option>Needs repair</option></select></label>
+          <label>Box and papers<select name="boxPapers" defaultValue=""><option value="" disabled>Select</option><option>Box and papers</option><option>Papers only</option><option>Box only</option><option>Neither</option></select></label>
+        </div>
+      )}
       <label>Your name<input name="name" required autoComplete="name" /></label>
       <div className="row">
         <label>Email<input name="email" type="email" required autoComplete="email" /></label>

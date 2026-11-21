@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { NICKNAMES } from "@/data/nicknames";
+import { NICKNAMES, nickBrand, nickUrl } from "@/data/nicknames";
 import { ThreeWaysLinks } from "@/components/ThreeWays";
 
 export const metadata: Metadata = {
@@ -13,16 +13,16 @@ export default function Nicknames() {
   return (
     <div className="wrap">
       <div className="page-head">
-        <h1>Rolex nicknames explained</h1>
-        <p>Collectors rarely use reference numbers in conversation. These are the nicknames you will hear most, what each one means and the reference it belongs to. None of them are official Rolex names.</p>
+        <h1>Rolex and watch nicknames explained</h1>
+        <p>Collectors rarely use reference numbers in conversation. These are the nicknames you will hear most, what each one means and the reference it belongs to. Most began as collector slang rather than official names. A few Omega and Tudor names are included too.</p>
       </div>
       <div className="table-scroll">
         <table className="compare">
           <thead><tr><th>Nickname</th><th>Model</th><th>Reference numbers</th></tr></thead>
-          <tbody>{NICKNAMES.map((n) => <tr key={n.slug}><td><Link href={`/rolex/${n.slug}`}>Rolex {n.name}</Link></td><td>{n.model}</td><td>{n.refs.join(", ")}</td></tr>)}</tbody>
+          <tbody>{NICKNAMES.map((n) => <tr key={nickUrl(n)}><td><Link href={nickUrl(n)}>{nickBrand(n)} {n.name}</Link></td><td>{n.model}</td><td>{n.refs.join(", ")}</td></tr>)}</tbody>
         </table>
       </div>
-      <div className="guide-list" style={{ marginTop: 22 }}>{NICKNAMES.map((n) => <Link key={n.slug} href={`/rolex/${n.slug}`}><h3>Rolex {n.name}</h3><p>{n.summary.split(". ")[0]}.</p></Link>)}</div>
+      <div className="guide-list" style={{ marginTop: 22 }}>{NICKNAMES.map((n) => <Link key={nickUrl(n)} href={nickUrl(n)}><h3>{nickBrand(n)} {n.name}</h3><p>{n.summary.split(". ")[0]}.</p></Link>)}</div>
       <h2 style={{ marginTop: 30 }}>Own one of these?</h2>
       <ThreeWaysLinks />
     </div>
