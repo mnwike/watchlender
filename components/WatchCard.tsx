@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { Watch } from "@/lib/catalogue";
-import WatchArt from "./WatchArt";
+import WatchPhoto from "./WatchPhoto";
 
 export default function WatchCard({ watch }: { watch: Watch }) {
   return (
     <Link href={watch.url} className="card">
-      <div className="card-art"><WatchArt watch={watch} size={120} /></div>
+      <div className="card-art"><WatchPhoto watch={watch} size={120} /></div>
       <div className="card-body">
         <span className="card-brand">{watch.brand}</span>
         <span className="card-model">{watch.model}</span>
