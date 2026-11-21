@@ -86,6 +86,24 @@ export const NICKNAMES: Nickname[] = [
     refs: ["116500LN", "126500LN"], related: ["pepsi", "batman"],
   },
   {
+    slug: "le-mans", name: "Le Mans", model: "Cosmograph Daytona",
+    summary: "The Rolex Le Mans is a special Cosmograph Daytona made to mark 100 years of the 24 Hours of Le Mans. It was launched in 2023 in white gold as reference 126529LN, which was discontinued within about a year, and followed in 2024 by a yellow gold version, 126528LN, that Rolex never listed in its public catalogue.",
+    identify: ["Black ceramic bezel with the number 100 picked out in red on the tachymeter scale.", "Black dial with contrasting white sub-dials in the style of the vintage exotic dials.", "The chronograph hour counter runs to 24 hours rather than 12.", "Calibre 4132 behind a sapphire case back.", "White gold is 126529LN; yellow gold is 126528LN."],
+    refs: ["126529LN", "126528LN"], related: ["paul-newman", "panda", "rainbow"],
+  },
+  {
+    slug: "paul-newman", name: "Paul Newman", model: "Cosmograph Daytona",
+    summary: "A Paul Newman Daytona is a vintage, manually wound Cosmograph Daytona fitted with what Rolex called an exotic dial. The name comes from the actor Paul Newman, who wore one. It is the dial, not the reference, that makes a Paul Newman, which is why authenticity and originality matter so much.",
+    identify: ["Sub-dials with square-tipped markers and an Art Deco style typeface.", "A contrasting outer minute track in the colour of the sub-dials.", "Found on vintage references including 6239, 6241, 6262, 6263, 6264 and 6265.", "Many ordinary dials have been swapped or faked over the years, so a Paul Newman needs expert authentication before any valuation."],
+    refs: ["6239", "6263"], otherRefs: "Exotic dials were also fitted to references 6241, 6262, 6264 and 6265. Paul Newman's own watch was a 6239.", related: ["le-mans", "panda"],
+  },
+  {
+    slug: "rainbow", name: "Rainbow", model: "Cosmograph Daytona",
+    summary: "The Rolex Rainbow is a gold Cosmograph Daytona with a bezel set with baguette-cut sapphires graded through the colours of the rainbow. Rolex introduced it in 2012 in yellow gold and white gold, and added an Everose gold version in 2018.",
+    identify: ["Bezel set with 36 baguette-cut sapphires in a rainbow gradient.", "Diamonds set into the lugs and crown guards.", "Reference ends in RBOW: 116598RBOW in yellow gold, 116599RBOW in white gold and 116595RBOW in Everose gold.", "Stones added after the watch left Rolex do not make a Rainbow: aftermarket gem-setting is valued very differently."],
+    refs: ["116595RBOW", "116598RBOW", "116599RBOW"], related: ["le-mans", "panda"],
+  },
+  {
     slug: "wimbledon", name: "Wimbledon", model: "Datejust",
     summary: "The Rolex Wimbledon is not a single reference but a dial: slate grey with Roman numerals outlined in green. It is most often seen on the Datejust 41, in steel, steel and white gold, and two-tone versions.",
     identify: ["Slate grey dial with black Roman numerals edged in green.", "Found on several Datejust references, so the reference alone does not confirm it.", "Check the dial against the papers if you are unsure which version you have."],

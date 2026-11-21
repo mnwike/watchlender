@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { validateLead } from "@/lib/leads";
-import { sendLead } from "@/lib/send";
+import { sendLead, trackLead } from "@/lib/send";
 
 const DELAY_MS = 10_000;
 const SNOOZE_DAYS = 7;
@@ -64,6 +64,7 @@ export default function EnquiryPopup({ endpoint }: { endpoint: string }) {
     setErrors([]);
     try {
       await sendLead(endpoint, { ...check.lead, _subject: `General enquiry from ${check.lead.name}` });
+      trackLead("general");
       store.set(SENT, "1", true);
       store.set(KEY, String(Date.now()));
       setState("done");

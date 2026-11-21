@@ -13,3 +13,13 @@ export async function sendLead(endpoint: string, payload: Record<string, unknown
   const data = await res.json().catch(() => null);
   if (data && data.ok === false) throw new Error(data.error ?? "rejected");
 }
+
+/** Records a lead in Google Analytics, only if the visitor accepted analytics (the tag is loaded). */
+export function trackLead(intent: string): void {
+  try {
+    const w = window as unknown as { __wlTag?: boolean; dataLayer?: unknown[] };
+    if (!w.__wlTag || !w.dataLayer) return;
+    // eslint-disable-next-line prefer-rest-params
+    (function gtag(..._a: unknown[]) { w.dataLayer!.push(arguments); })("event", "generate_lead", { lead_type: intent, page_path: location.pathname });
+  } catch { /* analytics is optional */ }
+}

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { validateLead } from "@/lib/leads";
-import { sendLead } from "@/lib/send";
+import { sendLead, trackLead } from "@/lib/send";
 
 type Intent = "sell" | "loan" | "list" | "value";
 
@@ -40,6 +40,7 @@ export default function LeadForm({
     setErrors([]);
     try {
       await sendLead(endpoint, { ...check.lead, year: data.year, weight: data.weight, watch: watchLabel ?? check.lead.watchText, _subject: `${intent === "sell" ? "Sell" : intent === "list" ? "Listing" : intent === "value" ? "Valuation" : "Loan"} enquiry: ${watchLabel ?? check.lead.watchText}` });
+      trackLead(intent);
       try { sessionStorage.setItem("wl_lead_sent", "1"); } catch { /* storage unavailable */ }
       setState("done");
     } catch {

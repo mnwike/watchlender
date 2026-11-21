@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { validateLead } from "@/lib/leads";
-import { sendLead } from "@/lib/send";
+import { sendLead, trackLead } from "@/lib/send";
 
 export default function BuyForm({ listingId, title, endpoint }: { listingId: string; title: string; endpoint: string }) {
   const [state, setState] = useState<"idle" | "sending" | "done">("idle");
@@ -18,6 +18,7 @@ export default function BuyForm({ listingId, title, endpoint }: { listingId: str
     setErrors([]);
     try {
       await sendLead(endpoint, { ...check.lead, _subject: `Buyer enquiry: ${title} (${listingId})` });
+      trackLead("buy");
       try { sessionStorage.setItem("wl_lead_sent", "1"); } catch { /* storage unavailable */ }
       setState("done");
     } catch {

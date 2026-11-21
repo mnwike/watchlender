@@ -184,6 +184,36 @@ export const GUIDES: Guide[] = [
       { name: "Sotheby's: the most expensive Rolex watches", url: "https://www.sothebys.com/en/articles/the-5-most-expensive-rolex-watches" },
     ],
   },
+  {
+    slug: "rolex-service-cost",
+    title: "Rolex service cost in the UK: the official price list explained",
+    description: "What a Rolex service costs in the UK from Rolex's own published prices: from £550 for a modern Datejust to £780 for a Daytona, with older watches costing more.",
+    intro: "Rolex now publishes its own service prices, so the base cost of an official service is no longer guesswork. The figures below are from Rolex's UK price list as we read it on 21 November 2026. The price depends on the model and, just as much, on the age of the watch, which you can tell from the number of digits in its reference.",
+    sections: [
+      { h: "Modern Rolex (six-digit references)", list: ["£550: 1908, Air-King, Date, Datejust, Day-Date, Explorer, Lady-Datejust, Land-Dweller, Milgauss and Oyster Perpetual.", "£640: Explorer II, GMT-Master II, Sea-Dweller, Deepsea, Submariner, Submariner Date and Yacht-Master.", "£780: Cosmograph Daytona, Sky-Dweller, Yacht-Master II and Deepsea Challenge."] },
+      { h: "Older Rolex (five-digit references)", list: ["£830: Date, Datejust, Day-Date, Explorer, Lady-Datejust, Oyster Perpetual and similar models.", "£1,010: Explorer II, GMT-Master, GMT-Master II, Sea-Dweller, Submariner and Yacht-Master.", "£1,190: Cosmograph Daytona."] },
+      { h: "Vintage Rolex (four-digit references)", p: ["Most four-digit references are listed at £1,380. A group of rare references, including the manually wound Cosmographs and early Submariners, can only be handled by Rolex's Restoration Atelier in Geneva, with prices listed from £3,220 and given by estimate."] },
+      { h: "What the price covers", list: ["Labour for servicing the movement and testing water resistance.", "Routine service parts such as gaskets, springs, lubricants and crown tubes.", "Not included: repairs to the case or bracelet, and any parts beyond the routine ones, which are quoted separately.", "Polishing and refinishing the case and bracelet is optional, listed at £140 for modern and older models and £280 for vintage."] },
+      { h: "Why the final bill can be higher", p: ["The published figure is a base price. If the watch needs a new crystal, crown, bezel insert or bracelet parts, those are added to the estimate. Rolex gives a free estimate for modern and five-digit watches before any work starts, so you can decide once you see it."] },
+      { h: "Official service or an independent watchmaker", p: ["An independent watchmaker is often cheaper and may be quicker. An official service comes with Rolex's own service guarantee and paperwork, which buyers like to see. On a vintage watch, be careful with either route: replacing an original dial, hands or bezel, or polishing the case, can reduce what collectors will pay."] },
+      { h: "Should you service a watch before selling it?", p: ["Not automatically. A service costs several hundred pounds and does not always add that much to an offer, and on a vintage watch it can do harm. Ask for a valuation first, with and without a service, and then decide."] },
+    ],
+    sources: [{ name: "Rolex UK servicing prices", url: "https://www.rolex.com/en-gb/watch-care-and-service/servicing-prices" }],
+  },
+  {
+    slug: "rolex-serial-numbers",
+    title: "Rolex serial numbers: where to find yours and what it tells you",
+    description: "Where the serial number is on a Rolex, how it differs from the reference number, what it can and cannot tell you about the age of the watch, and why it matters when you sell.",
+    intro: "Every Rolex has two numbers: a reference number, which identifies the model, and a serial number, which is unique to that one watch. The serial number is what links a watch to its papers, and on older watches it gives a rough idea of age.",
+    sections: [
+      { h: "Where to find it", list: ["Older watches, up to about 2005: engraved on the case between the lugs at 6 o'clock, hidden by the bracelet. The reference number is in the same place at 12 o'clock.", "From about 2005 to 2008: on the case between the lugs and also on the inner ring around the dial (the rehaut), at 6 o'clock.", "Newer watches: on the rehaut only, where you can read it through the crystal without removing the bracelet.", "It is also printed on the warranty card or certificate, and should match."] },
+      { h: "What the format tells you", list: ["Up to 1987: numbers only, issued roughly in sequence.", "1987 to about 2010: a letter followed by six digits. Each letter was used for a period of a year or so.", "From about 2010: eight random letters and digits, which carry no date information at all."] },
+      { h: "Can you date a Rolex from its serial number?", p: ["Only roughly, and only on watches made before the random serials. Rolex has never published a serial-to-year table. The charts you find online were compiled by collectors and dealers, they disagree with each other by a year or more, and a watch could sit in stock for some time before it was sold.", "For a watch with a random serial, the date on the warranty card is the only reliable guide to its age."] },
+      { h: "Why it matters when you sell", list: ["A buyer will check that the serial on the watch matches the papers. A match supports a full-set price.", "Serial numbers are checked against registers of lost and stolen watches.", "A missing, re-engraved or badly worn serial number is a warning sign and will be questioned."] },
+      { h: "Keep it private", p: ["Do not post a clear photo of your full serial number publicly. It can be copied onto counterfeit watches and forged papers. Share it only with a buyer, insurer or watchmaker you are dealing with."] },
+      { h: "Not sure which number is which?", p: ["The reference number identifies the model and is what you need to look a watch up. See our guide to finding your reference number, or search the catalogue."] },
+    ],
+  },
 ];
 
 export const getGuide = (slug: string) => GUIDES.find((g) => g.slug === slug);
