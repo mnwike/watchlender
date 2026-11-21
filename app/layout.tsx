@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE } from "@/lib/site";
 import { BRANDS } from "@/lib/catalogue";
 import { SearchBar } from "@/components/WatchCard";
+import EnquiryPopup from "@/components/EnquiryPopup";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </div>
         </footer>
+        <EnquiryPopup endpoint={SITE.leadEndpoint} />
       </body>
     </html>
   );

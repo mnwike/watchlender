@@ -127,3 +127,11 @@ describe("nicknames", () => {
     for (const n of NICKNAMES) for (const s of n.related ?? []) expect(NICKNAMES.some((x) => x.slug === s), `${n.slug} -> ${s}`).toBe(true);
   });
 });
+
+describe("general enquiry (pop-up)", () => {
+  it("needs a name, a valid email and consent, but no watch", () => {
+    expect(validateLead({ intent: "general", name: "Sam Tester", email: "sam@example.com", consent: true }).ok).toBe(true);
+    expect(validateLead({ intent: "general", name: "Sam Tester", email: "sam@example.com", consent: false }).ok).toBe(false);
+    expect(validateLead({ intent: "general", name: "", email: "sam@example.com", consent: true }).ok).toBe(false);
+  });
+});

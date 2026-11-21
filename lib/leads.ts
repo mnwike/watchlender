@@ -1,4 +1,4 @@
-export type LeadIntent = "sell" | "loan" | "list" | "buy" | "value";
+export type LeadIntent = "sell" | "loan" | "list" | "buy" | "value" | "general";
 
 export interface LeadInput {
   intent: LeadIntent;
@@ -26,7 +26,7 @@ const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().sli
 
 export function validateLead(body: Record<string, unknown>): { ok: true; lead: LeadInput } | { ok: false; errors: string[] } {
   const errors: string[] = [];
-  const intent = (["sell", "loan", "list", "buy", "value"] as const).find((i) => i === body.intent) ?? null;
+  const intent = (["sell", "loan", "list", "buy", "value", "general"] as const).find((i) => i === body.intent) ?? null;
   if (!intent) errors.push("Choose what you would like to do.");
   const name = clean(body.name, 120);
   if (name.length < 2) errors.push("Enter your name.");
@@ -37,7 +37,7 @@ export function validateLead(body: Record<string, unknown>): { ok: true; lead: L
   const watchId = clean(body.watchId, 200);
   const watchText = clean(body.watchText, 200);
   const listingId = clean(body.listingId, 80);
-  if (!watchId && !watchText && !listingId) errors.push("Tell us which watch you have.");
+  if (intent !== "general" && !watchId && !watchText && !listingId) errors.push("Tell us which watch you have.");
   const askingPrice = clean(body.askingPrice, 20).replace(/[£,\s]/g, "");
   if (intent === "list" && !/^\d{2,9}(\.\d{1,2})?$/.test(askingPrice)) errors.push("Enter your asking price in pounds.");
   if (body.consent !== true && body.consent !== "on" && body.consent !== "true") {

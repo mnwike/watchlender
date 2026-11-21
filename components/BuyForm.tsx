@@ -18,6 +18,7 @@ export default function BuyForm({ listingId, title, endpoint }: { listingId: str
     try {
       const res = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify({ ...check.lead, _subject: `Buyer enquiry: ${title} (${listingId})` }) });
       if (!res.ok) throw new Error(String(res.status));
+      try { sessionStorage.setItem("wl_lead_sent", "1"); } catch { /* storage unavailable */ }
       setState("done");
     } catch {
       setErrors(["We couldn't send your enquiry. Please try again."]);

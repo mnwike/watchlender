@@ -38,6 +38,7 @@ export default function LeadForm({
         body: JSON.stringify({ ...check.lead, year: data.year, watch: watchLabel ?? check.lead.watchText, _subject: `${intent === "sell" ? "Sell" : intent === "list" ? "Listing" : intent === "value" ? "Valuation" : "Loan"} enquiry: ${watchLabel ?? check.lead.watchText}` }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      try { sessionStorage.setItem("wl_lead_sent", "1"); } catch { /* storage unavailable */ }
       setState("done");
     } catch {
       setErrors(["We couldn't send your enquiry. Please try again."]);

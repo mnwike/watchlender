@@ -172,3 +172,38 @@ footer .legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: 26px; p
 
 .page-image { display: block; width: 100%; height: clamp(180px, 28vw, 340px); object-fit: cover; border-radius: 6px; border: 1px solid var(--line); margin: 6px 0 4px; }
 .hero-photo { width: 100%; max-width: 440px; height: 330px; object-fit: cover; border-radius: 8px; border: 3px solid var(--gold); display: block; }
+
+/* enquiry pop-up */
+.popup-backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(4, 22, 16, .62); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 20px; animation: popup-fade .25s ease-out; }
+.popup { position: relative; width: 100%; max-width: 480px; max-height: calc(100vh - 40px); overflow-y: auto; background: var(--card); border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(194,160,86,.55); animation: popup-rise .32s cubic-bezier(.2,.8,.2,1); }
+.popup-head { background: linear-gradient(135deg, var(--green-900), var(--green-700)); color: #fff; padding: 30px 30px 24px; border-bottom: 3px solid var(--gold); border-radius: 10px 10px 0 0; text-align: center; }
+.popup-head .eyebrow { margin-bottom: 8px; }
+.popup-head h2 { font-size: 1.6rem; margin: 0 0 6px; color: #fff; }
+.popup-head p { margin: 0; color: #d7e4dc; font-size: .95rem; }
+.popup-mark { display: block; width: 42px; height: 42px; margin: 0 auto 12px; border-radius: 50%; border: 2px solid var(--gold); background: radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px), linear-gradient(var(--gold), var(--gold)) 50% 28% / 2px 11px no-repeat, linear-gradient(var(--gold), var(--gold)) 62% 50% / 9px 2px no-repeat; }
+.popup-close { position: absolute; top: 10px; right: 12px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.popup-close:hover { background: rgba(255,255,255,.25); }
+.popup-body { padding: 22px 30px 24px; display: flex; flex-direction: column; gap: 12px; }
+.popup-body label { display: block; font-size: .82rem; font-weight: 600; letter-spacing: .02em; color: var(--green-800); }
+.popup-body input:not([type=checkbox]), .popup-body textarea { display: block; width: 100%; margin-top: 5px; padding: .7em .8em; border: 1px solid #c9cfc7; border-radius: 5px; font: 1rem var(--sans); background: #fbfaf6; transition: border-color .15s, box-shadow .15s; }
+.popup-body input:focus, .popup-body textarea:focus { outline: 0; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(194,160,86,.25); background: #fff; }
+.popup-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.popup-body .hp { position: absolute; left: -9999px; }
+.popup-consent { display: flex !important; gap: 8px; align-items: flex-start; font-weight: 400 !important; color: var(--muted) !important; font-size: .82rem !important; }
+.popup-consent input { margin-top: 3px; }
+.popup-submit { width: 100%; padding: .9em; font-size: 1.02rem; border-radius: 5px; box-shadow: 0 4px 12px rgba(194,160,86,.35); }
+.popup-submit:hover { filter: brightness(1.05); }
+.popup-later { border: 0; background: none; color: var(--muted); font: .85rem var(--sans); cursor: pointer; text-decoration: underline; align-self: center; padding: 2px; }
+.popup-done { text-align: center; padding-block: 34px; }
+.popup-done p { color: var(--muted); margin: 0 0 12px; }
+@keyframes popup-fade { from { opacity: 0; } }
+@keyframes popup-rise { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+@media (max-width: 600px) {
+  .popup-backdrop { align-items: flex-end; padding: 0; }
+  .popup { max-width: none; border-radius: 14px 14px 0 0; max-height: 88vh; }
+  .popup-head { border-radius: 14px 14px 0 0; padding: 22px 20px 18px; }
+  .popup-body { padding: 18px 20px 22px; }
+  .popup-row { grid-template-columns: 1fr; }
+  .popup-mark { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .popup-backdrop, .popup { animation: none; } }
