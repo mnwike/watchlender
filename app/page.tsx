@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HomeHeroPhoto from "@/components/HomeHeroPhoto";
 import { BRANDS, WATCHES } from "@/lib/catalogue";
 import { SITE } from "@/lib/site";
 import WatchCard, { SearchBar } from "@/components/WatchCard";
@@ -21,22 +22,7 @@ export default function Home() {
             <SearchBar large />
             <small>{WATCHES.length} references across {BRANDS.length} brands, and growing.</small>
           </div>
-          <div className="hero-art" style={{ flexDirection: "column", alignItems: "center", gap: 8 }}>
-            <img
-              src="/watch-photos/rolex-submariner.jpg"
-              alt="Rolex Submariner wristwatch photographed against a neutral background"
-              className="hero-photo"
-              width={440}
-              height={330}
-              fetchPriority="high"
-              style={{ objectFit: "contain", background: "#f1efe7" }}
-            />
-            <small style={{ fontSize: ".72rem", color: "#d7e4dc" }}>
-              Rolex Submariner photograph:{" "}
-              <a href="https://commons.wikimedia.org/wiki/File:Rolex-Submariner.jpg" style={{ color: "#e9dcbc" }} rel="noopener noreferrer" target="_blank">FrankWilliams</a>
-              {" · "}Public domain
-            </small>
-          </div>
+          <HomeHeroPhoto />
         </div>
       </div>
 
