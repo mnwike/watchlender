@@ -11,6 +11,20 @@ export interface WatchPhoto {
   license: string;
 }
 export const WATCH_PHOTOS: Record<string, WatchPhoto> = {
+  "rolex:16013": {
+    src: "/watch-photos/datejust.jpg",
+    alt: "Illustrative photograph of a Rolex Datejust reference 16013",
+    credit: "anna2005",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_16013.jpg",
+    license: "CC0",
+  },
+  "seiko:SKX007": {
+    src: "/watch-photos/skx007.jpg",
+    alt: "Illustrative photograph of a Seiko SKX007 automatic diving watch",
+    credit: "Ashley Pomeroy",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Seiko_SKX007.jpg",
+    license: "CC BY-SA 4.0",
+  },
   "rolex:16610": {
     src: "/watch-photos/rolex-submariner.jpg",
     alt: "Photograph of a Rolex Submariner wristwatch (illustrative)",
