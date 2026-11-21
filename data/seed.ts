@@ -5,6 +5,7 @@ export type SeedRow = [string, string, string, number | null, string, string, st
 
 export const SEED: Record<string, SeedRow[]> = {
   Rolex: [
+    ["Datejust", "Datejust 36", "16013", 36, "Steel and yellow gold", "Champagne", "Cal. 3035"],
     ["Submariner", "Submariner Date", "126610LN", 41, "Steel", "Black", "Cal. 3235", "Black"],
     ["Submariner", "Submariner Date", "126610LV", 41, "Steel", "Black", "Cal. 3235", "Green"],
     ["Submariner", "Submariner", "124060", 41, "Steel", "Black", "Cal. 3230", "Black"],
@@ -239,5 +240,8 @@ export const SEED: Record<string, SeedRow[]> = {
     ["RM 011", "RM 11-03 Automatic Flyback Chronograph", "RM 11-03", null, "Titanium", "Skeleton", "Cal. RMAC3"],
     ["RM 067", "RM 67-01 Automatic Extra Flat", "RM 67-01", null, "Titanium", "Skeleton", "Cal. CRMA6"],
     ["RM 055", "RM 055 Bubba Watson", "RM 055", null, "Ceramic", "Skeleton", "Cal. RMUL2"],
+  ],  Seiko: [
+    ["SKX", "SKX007", "SKX007", 42.5, "Steel", "Black", "Cal. 7S26", "Black"],
   ],
+
 };
