@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { validateLead } from "@/lib/leads";
+import { sendLead } from "@/lib/send";
 
 const DELAY_MS = 10_000;
 const SNOOZE_DAYS = 7;
@@ -62,8 +63,7 @@ export default function EnquiryPopup({ endpoint }: { endpoint: string }) {
     setState("sending");
     setErrors([]);
     try {
-      const res = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify({ ...check.lead, _subject: `General enquiry from ${check.lead.name}` }) });
-      if (!res.ok) throw new Error(String(res.status));
+      await sendLead(endpoint, { ...check.lead, _subject: `General enquiry from ${check.lead.name}` });
       store.set(SENT, "1", true);
       store.set(KEY, String(Date.now()));
       setState("done");

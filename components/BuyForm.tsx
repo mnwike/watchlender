@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { validateLead } from "@/lib/leads";
+import { sendLead } from "@/lib/send";
 
 export default function BuyForm({ listingId, title, endpoint }: { listingId: string; title: string; endpoint: string }) {
   const [state, setState] = useState<"idle" | "sending" | "done">("idle");
@@ -16,8 +17,7 @@ export default function BuyForm({ listingId, title, endpoint }: { listingId: str
     setState("sending");
     setErrors([]);
     try {
-      const res = await fetch(endpoint, { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify({ ...check.lead, _subject: `Buyer enquiry: ${title} (${listingId})` }) });
-      if (!res.ok) throw new Error(String(res.status));
+      await sendLead(endpoint, { ...check.lead, _subject: `Buyer enquiry: ${title} (${listingId})` });
       try { sessionStorage.setItem("wl_lead_sent", "1"); } catch { /* storage unavailable */ }
       setState("done");
     } catch {
