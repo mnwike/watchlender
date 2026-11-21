@@ -79,7 +79,7 @@ export default function EnquiryPopup({ endpoint }: { endpoint: string }) {
       <div className="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" ref={dialog}>
         <button className="popup-close" onClick={close} aria-label="Close">×</button>
         <div className="popup-head">
-          <span className="popup-mark" aria-hidden="true" />
+          <PopupClock />
           <span className="eyebrow">Sell now · List · Borrow</span>
           <h2 id="popup-title">How can we help with your watch?</h2>
           <p>Leave your details and one of our team will be in touch.</p>
@@ -107,5 +107,25 @@ export default function EnquiryPopup({ endpoint }: { endpoint: string }) {
         )}
       </div>
     </div>
+  );
+}
+
+/** Small live clock: the second hand ticks once a second, the minute and hour hands creep round. Starts at the real time. */
+function PopupClock() {
+  const now = new Date();
+  const s = now.getSeconds();
+  const m = now.getMinutes() * 60 + s;
+  const h = (now.getHours() % 12) * 3600 + m;
+  return (
+    <svg className="popup-clock" viewBox="0 0 48 48" width="52" height="52" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" className="pc-rim" />
+      {Array.from({ length: 12 }, (_, i) => (
+        <line key={i} x1="24" y1={i % 3 === 0 ? 4.5 : 5.5} x2="24" y2={i % 3 === 0 ? 9 : 7.5} className={i % 3 === 0 ? "pc-mark major" : "pc-mark"} transform={`rotate(${i * 30} 24 24)`} />
+      ))}
+      <line x1="24" y1="24" x2="24" y2="13.5" className="pc-hour" style={{ animationDelay: `-${h}s` }} />
+      <line x1="24" y1="24" x2="24" y2="8.5" className="pc-minute" style={{ animationDelay: `-${m}s` }} />
+      <line x1="24" y1="27.5" x2="24" y2="6.5" className="pc-second" style={{ animationDelay: `-${s}s` }} />
+      <circle cx="24" cy="24" r="1.8" className="pc-pin" />
+    </svg>
   );
 }

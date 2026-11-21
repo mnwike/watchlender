@@ -180,7 +180,16 @@ footer .legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: 26px; p
 .popup-head .eyebrow { margin-bottom: 8px; }
 .popup-head h2 { font-size: 1.6rem; margin: 0 0 6px; color: #fff; }
 .popup-head p { margin: 0; color: #d7e4dc; font-size: .95rem; }
-.popup-mark { display: block; width: 42px; height: 42px; margin: 0 auto 12px; border-radius: 50%; border: 2px solid var(--gold); background: radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px), linear-gradient(var(--gold), var(--gold)) 50% 28% / 2px 11px no-repeat, linear-gradient(var(--gold), var(--gold)) 62% 50% / 9px 2px no-repeat; }
+.popup-clock { display: block; margin: 0 auto 12px; overflow: visible; }
+.pc-rim { fill: rgba(255,255,255,.05); stroke: var(--gold); stroke-width: 1.6; }
+.pc-mark { stroke: var(--gold); stroke-width: 1; stroke-linecap: round; opacity: .7; }
+.pc-mark.major { stroke-width: 1.6; opacity: 1; }
+.pc-hour, .pc-minute, .pc-second { transform-origin: 24px 24px; stroke-linecap: round; }
+.pc-hour { stroke: #fff; stroke-width: 2.4; transform: rotate(305deg); animation: pc-spin 43200s linear infinite; }
+.pc-minute { stroke: #fff; stroke-width: 1.7; transform: rotate(60deg); animation: pc-spin 3600s linear infinite; }
+.pc-second { stroke: var(--gold); stroke-width: 1; animation: pc-spin 60s steps(60, end) infinite; }
+.pc-pin { fill: var(--gold); }
+@keyframes pc-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .popup-close { position: absolute; top: 10px; right: 12px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer; }
 .popup-close:hover { background: rgba(255,255,255,.25); }
 .popup-body { padding: 22px 30px 24px; display: flex; flex-direction: column; gap: 12px; }
@@ -204,6 +213,6 @@ footer .legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: 26px; p
   .popup-head { border-radius: 14px 14px 0 0; padding: 22px 20px 18px; }
   .popup-body { padding: 18px 20px 22px; }
   .popup-row { grid-template-columns: 1fr; }
-  .popup-mark { display: none; }
+  .popup-clock { width: 40px; height: 40px; margin-bottom: 8px; }
 }
-@media (prefers-reduced-motion: reduce) { .popup-backdrop, .popup { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .popup-backdrop, .popup, .pc-hour, .pc-minute, .pc-second { animation: none; } }
