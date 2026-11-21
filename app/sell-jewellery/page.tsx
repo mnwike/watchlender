@@ -37,7 +37,7 @@ export default function Page() {
             <li>Its condition, and a rough weight if it is mainly gold.</li>
           </ul>
           <h2>Rings</h2>
-          <p>See <Link href="/sell-engagement-ring">sell an engagement ring</Link> and <Link href="/sell-diamond-ring">sell a diamond ring</Link> for how rings are valued.</p>
+          <p>See <Link href="/sell-engagement-ring">sell an engagement ring</Link> and <Link href="/sell-diamond-ring">sell a diamond ring</Link> for how rings are valued. Also: <Link href="/sell-wedding-ring">wedding rings</Link>, <Link href="/sell-gold-ring">gold rings</Link> and <Link href="/sell-diamonds">diamonds</Link>.</p>
           <h2>Mainly gold?</h2>
           <p>Plain gold jewellery is usually valued by weight. Use the <Link href="/gold-price-calculator">gold calculator</Link> to see its metal value, or go to <Link href="/sell-gold">sell gold</Link>.</p>
           <h2>Your options</h2>

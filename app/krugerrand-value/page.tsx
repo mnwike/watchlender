@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { KRUGERRANDS, MetalShell, goldPerG } from "@/components/GoldExtras";
+import { KRUGERRANDS, MetalShell, goldPerG, CoinArt } from "@/components/GoldExtras";
 import { MetalLinks, PriceSource } from "@/components/MetalPages";
 import { TROY_OUNCE_G, gbp, priceDate } from "@/lib/metals";
 
@@ -20,7 +20,7 @@ const faqs = [
 
 export default function Page() {
   return (
-    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { label: "Krugerrand value" }]} eyebrow={`Reference price · ${priceDate()}`} h1="Krugerrand value" faqs={faqs} faqTitle="Krugerrand questions"
+    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { label: "Krugerrand value" }]} eyebrow={`Reference price · ${priceDate()}`} h1="Krugerrand value" art={<CoinArt />} faqs={faqs} faqTitle="Krugerrand questions"
       intro={<>The gold in a one-ounce Krugerrand was worth {gbp(oz)} at the spot price on {priceDate()}. Smaller Krugerrands are worth the same fraction of that.</>}>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Coin</th><th>Pure gold</th><th>Total weight</th><th>Gold value at spot</th></tr></thead>
         <tbody>{KRUGERRANDS.map((k) => <tr key={k.name}><td>{k.name}</td><td>{(k.fineOz * TROY_OUNCE_G).toFixed(2)} g</td><td>{k.gross.toFixed(2)} g</td><td>{gbp(oz * k.fineOz)}</td></tr>)}</tbody></table></div>

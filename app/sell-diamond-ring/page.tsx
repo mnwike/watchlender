@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MetalShell, area } from "@/components/GoldExtras";
+import { MetalShell, area, RingArt } from "@/components/GoldExtras";
 import { MetalLinks } from "@/components/MetalPages";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ const faqs = [
 
 export default function Page() {
   return (
-    <MetalShell crumbs={[{ href: "/sell-jewellery", label: "Sell jewellery" }, { label: "Sell a diamond ring" }]} eyebrow={area} h1="Sell a diamond ring" faqs={faqs} faqTitle="Common questions"
+    <MetalShell crumbs={[{ href: "/sell-jewellery", label: "Sell jewellery" }, { label: "Sell a diamond ring" }]} eyebrow={area} h1="Sell a diamond ring" art={<RingArt />} faqs={faqs} faqTitle="Common questions"
       intro={<>Sell a diamond ring for an offer based on the stone and its setting. Tell us what you know about the diamond and we&apos;ll come back to you, or you can borrow against the ring instead.</>}>
       <h2>What decides the price</h2>
       <ul>

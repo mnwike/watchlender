@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MetalShell, goldPerG } from "@/components/GoldExtras";
+import { MetalShell, goldPerG, CoinArt } from "@/components/GoldExtras";
 import { MetalLinks, PriceSource } from "@/components/MetalPages";
 import { TROY_OUNCE_G, gbp, priceDate } from "@/lib/metals";
 
@@ -21,7 +21,7 @@ const faqs = [
 
 export default function Page() {
   return (
-    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { href: "/sell-gold-coins", label: "Gold coins" }, { label: "Britannia value" }]} eyebrow={`Reference price · ${priceDate()}`} h1="Britannia gold coin value" faqs={faqs} faqTitle="Britannia questions"
+    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { href: "/sell-gold-coins", label: "Gold coins" }, { label: "Britannia value" }]} eyebrow={`Reference price · ${priceDate()}`} h1="Britannia gold coin value" art={<CoinArt />} faqs={faqs} faqTitle="Britannia questions"
       intro={<>The gold in a one-ounce Britannia was worth {gbp(oz)} at the spot price on {priceDate()}. Smaller Britannias are worth the same fraction of that.</>}>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Coin</th><th>Pure gold</th><th>Gold value at spot</th></tr></thead>
         <tbody>{SIZES.map((s) => <tr key={s.name}><td>{s.name}</td><td>{(s.f * TROY_OUNCE_G).toFixed(2)} g</td><td>{gbp(oz * s.f)}</td></tr>)}</tbody></table></div>

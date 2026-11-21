@@ -96,6 +96,7 @@ export const SEED: Record<string, SeedRow[]> = {
     ["Seamaster", "Seamaster Diver 300M", "210.30.42.20.06.001", 42, "Steel", "Grey", "Cal. 8800", "Blue"],
     ["Seamaster", "Seamaster Diver 300M", "210.32.42.20.01.001", 42, "Steel", "Black", "Cal. 8800", "Black"],
     ["Seamaster", "Seamaster Professional 300M", "2531.80.00", 41, "Steel", "Blue", "Cal. 1120", "Blue"],
+    ["Seamaster", "Seamaster Diver 300M 007 Edition", "210.90.42.20.01.001", 42, "Titanium", "Brown", "Cal. 8806", "Brown"],
     ["Seamaster", "Seamaster Aqua Terra 150M", "220.10.41.21.01.001", 41, "Steel", "Black", "Cal. 8900"],
     ["Seamaster", "Seamaster Aqua Terra 150M", "220.10.41.21.03.001", 41, "Steel", "Blue", "Cal. 8900"],
     ["Seamaster", "Seamaster Planet Ocean 600M", "215.30.44.21.01.001", 43.5, "Steel", "Black", "Cal. 8900", "Black"],

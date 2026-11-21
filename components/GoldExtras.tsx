@@ -4,12 +4,15 @@ import { MetalForm, MetalLinks, PriceSource, PriceTable, calcProps } from "./Met
 import MetalCalculator from "./MetalCalculator";
 import { PURITIES, TROY_OUNCE_G, gbp, pricePerGram, priceDate, refPerOz, type Metal } from "@/lib/metals";
 import { SITE } from "@/lib/site";
+import { BarArt, CoinArt, HallmarkArt, JewelleryArt, RingArt } from "./MetalArt";
+
+export { BarArt, CoinArt, HallmarkArt, JewelleryArt, RingArt };
 
 export interface Faq { q: string; a: string }
 type Crumb = { href?: string; label: string };
 
 /** Shared two-column layout for the gold section: breadcrumb, heading, body, FAQ, enquiry form. */
-export function MetalShell({ crumbs, eyebrow, h1, intro, faqs, faqTitle, children }: { crumbs: Crumb[]; eyebrow: string; h1: string; intro: ReactNode; faqs: Faq[]; faqTitle: string; children: ReactNode }) {
+export function MetalShell({ crumbs, eyebrow, h1, intro, faqs, faqTitle, art, children }: { crumbs: Crumb[]; eyebrow: string; h1: string; intro: ReactNode; faqs: Faq[]; faqTitle: string; art?: ReactNode; children: ReactNode }) {
   const jsonLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   return (
     <div className="wrap">
@@ -18,6 +21,7 @@ export function MetalShell({ crumbs, eyebrow, h1, intro, faqs, faqTitle, childre
       <div className="page-head"><span className="eyebrow">{eyebrow}</span><h1>{h1}</h1><p>{intro}</p></div>
       <div className="detail">
         <div className="prose" style={{ maxWidth: "none" }}>
+          {art}
           {children}
           <section className="faq" style={{ padding: 0 }}>
             <h2>{faqTitle}</h2>
@@ -52,7 +56,7 @@ export function CaratPage({ slug }: { slug: string }) {
     { q: `Is the scrap price for ${c.label} gold the same as this?`, a: `No. This is the value of the gold content at the spot price. A scrap price is what a buyer actually pays, which is lower to cover refining and their margin, and differs between buyers.` },
   ];
   return (
-    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { href: "/gold-price-per-gram", label: "Gold price per gram" }, { label: `${c.label} gold` }]} eyebrow={`Reference price · ${priceDate()}`} h1={`${c.label} gold price per gram`} faqs={faqs} faqTitle={`${c.label} gold questions`}
+    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { href: "/gold-price-per-gram", label: "Gold price per gram" }, { label: `${c.label} gold` }]} eyebrow={`Reference price · ${priceDate()}`} h1={`${c.label} gold price per gram`} art={<HallmarkArt mark={c.mark} metal="gold" />} faqs={faqs} faqTitle={`${c.label} gold questions`}
       intro={<>The gold in a gram of {c.label} ({c.mark}) gold was worth {gbp(perG)} at the spot price on {priceDate()}. {c.label} gold is {c.parts}.</>}>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Weight of {c.label} gold</th><th>Gold value at spot</th></tr></thead>
         <tbody>{WEIGHTS.map((w) => <tr key={w}><td>{w} g</td><td>{gbp(perG * w)}</td></tr>)}<tr><td>1 troy ounce ({TROY_OUNCE_G.toFixed(2)} g)</td><td>{gbp(perG * TROY_OUNCE_G)}</td></tr></tbody></table></div>
@@ -80,7 +84,7 @@ export function ScrapPage({ metal }: { metal: "gold" | "silver" }) {
     { q: `Should I scrap everything?`, a: `No. Coins, signed jewellery, pieces with stones and antique silver by known makers can be worth more than their metal. Keep those separate and ask before they are weighed in.` },
   ];
   return (
-    <MetalShell crumbs={[{ href: `/sell-${metal}`, label: `Sell ${metal}` }, { label: `Scrap ${metal} price` }]} eyebrow={`Reference price · ${priceDate()}`} h1={`Scrap ${metal} price`} faqs={faqs} faqTitle={`Scrap ${metal} questions`}
+    <MetalShell crumbs={[{ href: `/sell-${metal}`, label: `Sell ${metal}` }, { label: `Scrap ${metal} price` }]} eyebrow={`Reference price · ${priceDate()}`} h1={`Scrap ${metal} price`} art={<JewelleryArt tone={metal} />} faqs={faqs} faqTitle={`Scrap ${metal} questions`}
       intro={<>Scrap {metal} is valued by weight and purity. The table shows the value of the {metal} in each purity at the spot price on {priceDate()}: the starting point for any scrap offer.</>}>
       <PriceTable metal={metal} />
       <PriceSource />
@@ -127,7 +131,7 @@ export function SpotPricePage({ metal }: { metal: "gold" | "silver" }) {
     { q: metal === "gold" ? "Is there VAT on gold in the UK?" : "Is there VAT on silver in the UK?", a: metal === "gold" ? "Investment gold, meaning bars and coins that meet set purity standards, is exempt from VAT in the UK. Gold jewellery is not. This is general information, not tax advice." : "Yes. Unlike investment gold, silver bars and coins are subject to VAT when bought new in the UK. This is general information, not tax advice." },
   ];
   return (
-    <MetalShell crumbs={[{ href: `/sell-${metal}`, label: metal === "gold" ? "Gold and precious metals" : "Sell silver" }, { label: `${metal === "gold" ? "Gold" : "Silver"} price UK` }]} eyebrow={`Reference price · ${priceDate()}`} h1={`${metal === "gold" ? "Gold" : "Silver"} price UK`} faqs={faqs} faqTitle={`${metal === "gold" ? "Gold" : "Silver"} price questions`}
+    <MetalShell crumbs={[{ href: `/sell-${metal}`, label: metal === "gold" ? "Gold and precious metals" : "Sell silver" }, { label: `${metal === "gold" ? "Gold" : "Silver"} price UK` }]} eyebrow={`Reference price · ${priceDate()}`} h1={`${metal === "gold" ? "Gold" : "Silver"} price UK`} art={metal === "gold" ? <BarArt /> : <CoinArt tone="silver" />} faqs={faqs} faqTitle={`${metal === "gold" ? "Gold" : "Silver"} price questions`}
       intro={<>The {metal} price in pounds was {gbp(perOz)} per troy ounce on {priceDate()}, or {gbp(perG)} per gram. This is a daily reference price, updated each morning, not a live feed.</>}>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Pure {metal}</th><th>Price in pounds</th></tr></thead>
         <tbody><tr><td>Per gram</td><td>{gbp(perG)}</td></tr><tr><td>Per troy ounce</td><td>{gbp(perOz)}</td></tr><tr><td>Per kilo</td><td>{gbp(perG * 1000)}</td></tr></tbody></table></div>
@@ -169,7 +173,7 @@ export function HallmarkPage({ slug }: { slug: string }) {
     { q: `Is ${h.mark} ${h.metal} the same as ${h.metal}-plated?`, a: `No. ${h.mark} describes solid ${h.name}. Plated items carry different marks, such as ${h.metal === "gold" ? "GP, HGE, RGP or 'rolled gold'" : "EPNS, EP or 'silver plate'"}, and contain very little precious metal.` },
   ];
   return (
-    <MetalShell crumbs={[{ href: `/sell-${h.metal}`, label: `Sell ${h.metal}` }, { href: "/guides/uk-gold-hallmarks", label: "Hallmarks" }, { label: `${h.mark} ${h.metal}` }]} eyebrow={`Hallmark ${h.mark}`} h1={`What does ${h.mark} mean on ${h.metal}?`} faqs={faqs} faqTitle={`${h.mark} ${h.metal} questions`}
+    <MetalShell crumbs={[{ href: `/sell-${h.metal}`, label: `Sell ${h.metal}` }, { href: "/guides/uk-gold-hallmarks", label: "Hallmarks" }, { label: `${h.mark} ${h.metal}` }]} eyebrow={`Hallmark ${h.mark}`} h1={`What does ${h.mark} mean on ${h.metal}?`} art={<HallmarkArt mark={h.mark} metal={h.metal === "silver" ? "silver" : "gold"} />} faqs={faqs} faqTitle={`${h.mark} ${h.metal} questions`}
       intro={<>{h.mark} stamped on {h.metal} means it is {pct}% pure: {h.name}. A gram of it contained {gbp(perG)} of {h.metal} at the spot price on {priceDate()}.</>}>
       <h2>{h.mark} = {h.name}</h2>
       <p>The number is the purity in parts per thousand. {h.mark} means {h.mark} parts {h.metal} and {1000 - Number(h.mark)} parts other metals. {h.note}</p>

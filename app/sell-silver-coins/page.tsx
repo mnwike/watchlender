@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MetalShell, area, silverPerG } from "@/components/GoldExtras";
+import { MetalShell, area, silverPerG, CoinArt } from "@/components/GoldExtras";
 import { MetalLinks, PriceSource } from "@/components/MetalPages";
 import { TROY_OUNCE_G, gbp, priceDate } from "@/lib/metals";
 
@@ -21,7 +21,7 @@ const faqs = [
 
 export default function Page() {
   return (
-    <MetalShell crumbs={[{ href: "/sell-silver", label: "Sell silver" }, { label: "Sell silver coins" }]} eyebrow={area} h1="Sell silver coins" faqs={faqs} faqTitle="Selling silver coins: common questions"
+    <MetalShell crumbs={[{ href: "/sell-silver", label: "Sell silver" }, { label: "Sell silver coins" }]} eyebrow={area} h1="Sell silver coins" art={<CoinArt tone="silver" />} faqs={faqs} faqTitle="Selling silver coins: common questions"
       intro={<>Sell old British silver coins, silver Britannias and other silver coins for an offer based on their silver content and any collector value.</>}>
       <h2>The silver in old British coins</h2>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Coin</th><th>Before 1920 (92.5%)</th><th>1920 to 1946 (50%)</th></tr></thead>

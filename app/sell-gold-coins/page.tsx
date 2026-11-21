@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { COIN_TABLE, MetalShell, area, goldPerG } from "@/components/GoldExtras";
+import { COIN_TABLE, MetalShell, area, goldPerG, CoinArt } from "@/components/GoldExtras";
 import { MetalLinks, PriceSource } from "@/components/MetalPages";
 import { gbp, priceDate } from "@/lib/metals";
 
@@ -19,7 +19,7 @@ const faqs = [
 
 export default function Page() {
   return (
-    <MetalShell crumbs={[{ href: "/sell-gold", label: "Sell gold" }, { label: "Sell gold coins" }]} eyebrow={area} h1="Sell gold coins" faqs={faqs} faqTitle="Selling gold coins: common questions"
+    <MetalShell crumbs={[{ href: "/sell-gold", label: "Sell gold" }, { label: "Sell gold coins" }]} eyebrow={area} h1="Sell gold coins" art={<CoinArt text="22ct" />} faqs={faqs} faqTitle="Selling gold coins: common questions"
       intro={<>Sell sovereigns, Krugerrands, Britannias and other gold coins for an offer based on their gold content and any collector value, or borrow against them instead.</>}>
       <h2>What the gold in common coins is worth</h2>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Coin</th><th>Pure gold</th><th>Carat</th><th>Gold value at spot</th></tr></thead>

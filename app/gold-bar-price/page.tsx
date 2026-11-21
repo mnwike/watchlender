@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GOLD_BARS, MetalShell, goldPerG } from "@/components/GoldExtras";
+import { GOLD_BARS, MetalShell, goldPerG, BarArt } from "@/components/GoldExtras";
 import { MetalLinks, PriceSource } from "@/components/MetalPages";
 import { TROY_OUNCE_G, gbp, priceDate } from "@/lib/metals";
 
@@ -20,7 +20,7 @@ const faqs = [
 
 export default function Page() {
   return (
-    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { label: "Gold bar price" }]} eyebrow={`Reference price · ${priceDate()}`} h1="Gold bar price" faqs={faqs} faqTitle="Gold bar questions"
+    <MetalShell crumbs={[{ href: "/sell-gold", label: "Gold and precious metals" }, { label: "Gold bar price" }]} eyebrow={`Reference price · ${priceDate()}`} h1="Gold bar price" art={<BarArt />} faqs={faqs} faqTitle="Gold bar questions"
       intro={<>A 1 oz gold bar contained {gbp(oz)} of gold at the spot price on {priceDate()}. The table shows the gold value of each common bar size, assuming fine (999.9) gold.</>}>
       <div className="table-scroll"><table className="compare"><thead><tr><th>Bar size</th><th>Gold value at spot</th></tr></thead>
         <tbody>{GOLD_BARS.map((b) => <tr key={b.name}><td>{b.name}</td><td>{gbp(b.g * goldPerG())}</td></tr>)}</tbody></table></div>

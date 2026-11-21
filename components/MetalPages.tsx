@@ -120,7 +120,7 @@ export function SellMetalPage({ metal }: { metal: Metal }) {
             <li>Keep items with stones or by well-known makers separate: they can be worth more than their metal. See <Link href="/sell-jewellery">sell jewellery</Link>.</li>
             <li>Compare offers. Buyers pay different proportions of the spot value.</li>
           </ul>
-          <p>Also: {(["gold", "silver", "platinum"] as Metal[]).filter((m) => m !== metal).map((m, i) => <span key={m}>{i > 0 ? " · " : ""}<Link href={`/sell-${m}`}>sell {m}</Link></span>)} · <Link href={`/${metal}-price-per-gram`}>{metal} price per gram</Link>{metal !== "platinum" && <> · <Link href={`/scrap-${metal}-price`}>scrap {metal} price</Link></>}{metal === "gold" && <> · <Link href="/sell-gold-coins">sell gold coins</Link></>}</p>
+          <p>Also: {(["gold", "silver", "platinum"] as Metal[]).filter((m) => m !== metal).map((m, i) => <span key={m}>{i > 0 ? " · " : ""}<Link href={`/sell-${m}`}>sell {m}</Link></span>)} · <Link href={`/${metal}-price-per-gram`}>{metal} price per gram</Link>{metal !== "platinum" && <> · <Link href={`/scrap-${metal}-price`}>scrap {metal} price</Link></>}{metal === "gold" && <> · <Link href="/sell-gold-coins">sell gold coins</Link> · <Link href="/sell-gold-ring">sell a gold ring</Link></>}{metal === "silver" && <> · <Link href="/sell-silver-coins">sell silver coins</Link> · <Link href="/sell-silver-cutlery">sell silver cutlery</Link></>}</p>
           <section className="faq" style={{ padding: 0 }}>
             <h2>Selling {metal}: common questions</h2>
             {faqs.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}

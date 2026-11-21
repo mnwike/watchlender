@@ -170,6 +170,12 @@ export const NICKNAMES: Nickname[] = [
     refs: ["310.32.42.50.02.001"], otherRefs: "The 2015 edition is reference 311.32.42.30.04.003 and the 2003 edition is 3578.51.00.",
   },
   {
+    brand: "Omega", slug: "bond", name: "Bond Seamaster", model: "Seamaster Diver 300M",
+    summary: "The Omega Bond watch is the Seamaster Diver 300M, worn by James Bond on screen since GoldenEye in 1995. Collectors usually mean the blue wave-dial Seamaster Professional 300M of the 1990s, reference 2531.80, or the titanium 007 Edition made for No Time To Die, reference 210.90.42.20.01.001.",
+    identify: ["2531.80: 41 mm steel case, blue wave-pattern dial, blue bezel, skeleton hands and a helium escape valve at 10 o'clock.", "The first Bond Seamaster, in GoldenEye, was the quartz version, reference 2541.80. The automatic 2531.80 followed in later films.", "007 Edition: 42 mm titanium case, brown aluminium dial and bezel, and a titanium mesh bracelet or striped fabric strap.", "The current blue Diver 300M, 210.30.42.20.03.001, continues the same design with a ceramic dial and bezel."],
+    refs: ["2531.80.00", "210.90.42.20.01.001", "210.30.42.20.03.001"], otherRefs: "The quartz GoldenEye watch is reference 2541.80.", related: ["moonwatch", "snoopy"],
+  },
+  {
     brand: "Omega", slug: "moonwatch", name: "Moonwatch", model: "Speedmaster Professional",
     summary: "The Omega Moonwatch is the Speedmaster Professional, the watch worn on the Moon during the Apollo missions. Unlike most nicknames it is one Omega uses itself. The current steel references use the calibre 3861 and come with either a hesalite or a sapphire crystal.",
     identify: ["42 mm steel case with a black dial, three sub-dials and a black tachymeter bezel.", "Hand-wound movement: calibre 3861 on current models, 1861 before that.", "310.30.42.50.01.001 has a hesalite crystal and a solid case back.", "310.30.42.50.01.002 has a sapphire crystal and a display case back."],
