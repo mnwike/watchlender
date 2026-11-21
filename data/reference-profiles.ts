@@ -9,6 +9,16 @@ export interface ReferenceProfile {
   provenance: { name: string; url: string };
 }
 export const REFERENCE_PROFILES: Record<string, ReferenceProfile> = {
+  "tudor:M7939A1A0RU0001": {
+    summary: "This version of the Tudor Black Bay 58 pairs a 39 mm steel case with a burgundy dial and rotating bezel. It uses the automatic MT5400-U movement, certified to METAS Master Chronometer standards, with an approximately 65-hour power reserve.",
+    identification: "The full M7939A1A0RU-0001 reference identifies the five-link bracelet configuration. Check bracelet, dial and case markings: other Black Bay 58 models can have different movements or colours.",
+    provenance: { name: "Tudor official reference specifications", url: "https://www.tudorwatch.com/en/watches/black-bay-58/m7939a1a0ru-0001" },
+  },
+  "patek-philippe:5226G001": {
+    summary: "The Patek Philippe Calatrava 5226G-001 features a 40 mm white-gold case with an engraved hobnail-pattern caseband and a textured charcoal-grey dial. The self-winding 26-330 S C movement provides date and centre seconds.",
+    identification: "Confirm the full 5226G-001 reference, grey dial and guilloched caseband. Inspect the serial, papers and supplied straps as part of any professional authentication.",
+    provenance: { name: "Patek Philippe official collection page", url: "https://www.patek.com/en/collection/calatrava/5226G-001" },
+  },
   "seiko:SPB143J1": {
     summary: "The Seiko Prospex SPB143J1 draws on the brand's 1965 diver design. It has a 40.5 mm stainless-steel case, a 6R35 automatic movement with manual winding and a stated 70-hour power reserve.",
     identification: "Confirm the full SPB143J1 suffix, dial, bracelet and case details. Later Prospex divers may look similar but have different movements and water-resistance specifications.",
