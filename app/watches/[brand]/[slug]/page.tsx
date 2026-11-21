@@ -9,6 +9,7 @@ import LeadForm from "@/components/LeadForm";
 import { listingsForWatch } from "@/lib/listings";
 import ListingCard from "@/components/ListingCard";
 import { NICKNAMES, nickBrand, nickUrl } from "@/data/nicknames";
+import { REFERENCE_PROFILES } from "@/data/reference-profiles";
 
 type P = Promise<{ brand: string; slug: string }>;
 export const dynamicParams = false;
@@ -41,6 +42,7 @@ export default async function WatchPage({ params }: { params: P }) {
   if (!w) notFound();
   const name = fullName(w);
   const qa = faqs(w);
+  const profile = REFERENCE_PROFILES[`${w.brandSlug}:${w.referenceNormalized}`];
   const jsonLd = [
     {
       "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -76,6 +78,17 @@ export default async function WatchPage({ params }: { params: P }) {
         <div>
           <div className="detail-art"><WatchPhoto watch={w} size={230} /><WatchPhotoCredit watch={w} /></div>
           <table className="specs"><tbody>{specs.map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody></table>
+          {profile && (
+            <section style={{ padding: "4px 0 14px" }}>
+              <h2>About this reference</h2>
+              <p>{profile.summary}</p>
+              <p>{profile.identification}</p>
+              <p style={{ fontSize: ".82rem", color: "var(--muted)" }}>Reference information:{" "}
+                <a href={profile.provenance.url} rel="nofollow noopener noreferrer" target="_blank">{profile.provenance.name}</a>.
+                Photos are illustrative; inspection is required to establish identity and condition.
+              </p>
+            </section>
+          )}
           {w.source && <p style={{ fontSize: ".82rem", color: "var(--muted)", marginTop: -8 }}>Model, size, material and dial options checked against <a href={w.source.url} rel="nofollow noopener">{w.source.name}</a> on {w.source.checked}.</p>}
           <section className="faq" style={{ padding: "10px 0 0" }}>
             <h2>Selling or borrowing against a {w.brand} {w.referenceDisplay}</h2>
