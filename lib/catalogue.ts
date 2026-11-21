@@ -4,6 +4,8 @@ import { HAMILTON } from "@/data/manufacturer/hamilton";
 import { CASIO } from "@/data/manufacturer/casio";
 import { SEIKO } from "@/data/manufacturer/seiko";
 import { GRAND_SEIKO } from "@/data/manufacturer/grand-seiko";
+import { TUDOR } from "@/data/manufacturer/tudor";
+import { PATEK_PHILIPPE } from "@/data/manufacturer/patek-philippe";
 import { normalizeBrand, normalizeReference, slugify } from "./normalize";
 
 export interface Watch {
@@ -36,7 +38,7 @@ export interface ManufacturerSet {
   checked: string;
   rows: ManufacturerRow[];
 }
-const MANUFACTURER_SETS: ManufacturerSet[] = [ROLEX, HAMILTON, CASIO, SEIKO, GRAND_SEIKO];
+const MANUFACTURER_SETS: ManufacturerSet[] = [ROLEX, HAMILTON, CASIO, SEIKO, GRAND_SEIKO, TUDOR, PATEK_PHILIPPE];
 
 function build(): Watch[] {
   const byKey = new Map<string, Watch>();
