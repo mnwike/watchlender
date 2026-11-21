@@ -23,19 +23,14 @@ export default function Home() {
           </div>
           <div className="hero-art" style={{ flexDirection: "column", alignItems: "center", gap: 8 }}>
             <img
-              src="/watch-photos/rolex-submariner.jpg"
-              alt="Rolex Submariner wristwatch photographed against a neutral background"
+              src="/images/watchlender-homepage-hero.jpg"
+              alt="Stainless-steel luxury diving watch with blue dial resting in an open presentation box"
               className="hero-photo"
-              width={440}
-              height={330}
+              width={1600}
+              height={1009}
               fetchPriority="high"
-              style={{ objectFit: "contain", background: "#f1efe7" }}
+              style={{ objectFit: "cover", objectPosition: "center center" }}
             />
-            <small style={{ fontSize: ".72rem", color: "#d7e4dc" }}>
-              Rolex Submariner photograph:{" "}
-              <a href="https://commons.wikimedia.org/wiki/File:Rolex-Submariner.jpg" style={{ color: "#e9dcbc" }} rel="noopener noreferrer" target="_blank">FrankWilliams</a>
-              {" · "}Public domain
-            </small>
           </div>
         </div>
       </div>
